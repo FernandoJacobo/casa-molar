@@ -3,7 +3,7 @@
  * Arcada dentaria ilustrada (vista oclusal), construida con las piezas base del sprite a lo largo
  * de la curva de `geometriaArcada`. Estática: el odontograma interactivo vive en `OdontogramaInteractivo`.
  */
-import { geometriaArcada, trazoCurva, type PiezaColocada } from '~/utils/arcada'
+import { disposicionArcadas, posicionEtiqueta, transformarPieza, trazoCurva, type PiezaColocada } from '~/utils/arcada'
 
 const props = withDefaults(defineProps<{
   modo?: 'superior' | 'ambas'
@@ -17,32 +17,12 @@ const props = withDefaults(defineProps<{
   titulo?: string
 }>(), { modo: 'ambas', destello: false, cuadrante: null, numeros: false, encia: true, titulo: '' })
 
-const sup = geometriaArcada('superior')
-const inf = geometriaArcada('inferior')
+const d = disposicionArcadas()
+const { sup, inf, origenSup, origenInf } = d
 
-const MARGEN = 7
-const SEPARACION = 9
-const maxY = (ps: PiezaColocada[]) => Math.max(...ps.map(p => p.y)) + 6
-const altoSup = maxY(sup.piezas)
-const altoInf = maxY(inf.piezas)
-const ancho = Math.max(sup.semiancho, inf.semiancho) * 2 + 16
-const origenSup = MARGEN + 4
-const origenInf = origenSup + altoSup + SEPARACION + altoInf
-
-const viewBox = computed(() => {
-  const alto = props.modo === 'superior' ? origenSup + altoSup + MARGEN : origenInf + MARGEN
-  return `${-ancho / 2 - MARGEN} 0 ${ancho + MARGEN * 2} ${alto}`
-})
-
-const transformar = (p: PiezaColocada) => `translate(${p.x.toFixed(2)} ${p.y.toFixed(2)}) rotate(${p.angulo.toFixed(2)}) scale(${p.escalaX.toFixed(3)} ${p.escalaY.toFixed(3)})`
-
-/** Posición del número FDI: hacia afuera de la pieza, siguiendo la normal. */
-function etiqueta(p: PiezaColocada, invertida: boolean) {
-  const d = 9.5
-  const x = p.x + p.nx * d
-  const y = p.y + p.ny * d
-  return invertida ? { x, y: origenInf - y } : { x, y: origenSup + y }
-}
+const viewBox = computed(() => `${-d.semiancho} 0 ${d.semiancho * 2} ${props.modo === 'superior' ? d.altoSup : d.alto}`)
+const transformar = transformarPieza
+const etiqueta = (p: PiezaColocada, inferior: boolean) => posicionEtiqueta(d, p, inferior)
 
 const cuadranteDe = (fdi: number) => Math.floor(fdi / 10)
 const curvaSup = trazoCurva(sup, 0.5)

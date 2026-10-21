@@ -1,22 +1,40 @@
 <script setup lang="ts">
-import { equipo } from '~/data/equipo'
-import { tratamientos } from '~/data/tratamientos'
+import { site } from '~/config/site'
+import { preguntas } from '~/data/contenido'
+
+useSeoMeta({
+  title: null,
+  ogTitle: `${site.nombre} — ${site.sufijo} (demo)`,
+  description: site.descripcion,
+  ogDescription: site.descripcion,
+})
+
+if (site.indexable) {
+  useHead({
+    script: [{
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': preguntas.map(p => ({ '@type': 'Question', 'name': p.pregunta, 'acceptedAnswer': { '@type': 'Answer', 'text': p.respuesta } })),
+      }),
+    }],
+  })
+}
 </script>
 
 <template>
-  <div class="contenedor" style="padding-block: 3rem; display: grid; gap: 3rem">
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem">
-      <SvgAvatarSvg v-for="p in equipo" :key="p.id" :avatar="p.avatar" />
-    </div>
-    <div style="background: var(--color-placa); padding: 2rem">
-      <SvgPanoramicaSvg />
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem">
-      <div v-for="t in tratamientos" :key="t.slug" style="border: 1px solid; background: var(--color-hueso)">
-        <SvgIlustracionTratamiento :slug="t.slug" />
-        <p class="etiqueta">{{ t.slug }}</p>
-      </div>
-      <SvgSillonSvg />
-    </div>
+  <div>
+    <InicioHeroInicio />
+    <InicioSeccionOdontograma />
+    <LazyInicioSeccionTonos hydrate-on-visible />
+    <LazyInicioIndiceTratamientos hydrate-on-visible />
+    <LazyInicioAntesDespues hydrate-on-visible />
+    <LazyInicioPrimeraVisita hydrate-on-visible />
+    <InicioPlacaRadiografica />
+    <InicioQuienesAtienden />
+    <InicioLoQueEscriben />
+    <LazyInicioPreguntasFrecuentes hydrate-on-visible />
+    <LazyInicioCtaCita hydrate-on-visible />
   </div>
 </template>

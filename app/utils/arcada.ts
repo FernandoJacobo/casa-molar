@@ -160,3 +160,48 @@ export function trazoCurva(g: Geometria, offset = 0, extension = 1, pasos = 48):
 
 /** Cuadrantes en el orden en que se cepillan en el cronómetro. */
 export const CUADRANTES_CEPILLADO = [1, 2, 3, 4] as const
+
+export interface Disposicion {
+  sup: Geometria
+  inf: Geometria
+  /** Desplazamiento vertical del frente de cada arcada en el lienzo. */
+  origenSup: number
+  origenInf: number
+  /** Medio ancho del lienzo (el centro está en x = 0). */
+  semiancho: number
+  altoSup: number
+  alto: number
+}
+
+/**
+ * Las dos arcadas enfrentadas como en un odontograma: la superior con el frente arriba (∩) y la
+ * inferior con el frente abajo (∪); los molares de ambas quedan hacia el centro.
+ */
+export function disposicionArcadas(margen = 7, separacion = 9): Disposicion {
+  const sup = geometriaArcada('superior')
+  const inf = geometriaArcada('inferior')
+  const fondo = (g: Geometria) => Math.max(...g.piezas.map(p => p.y)) + 6
+  const altoSup = fondo(sup)
+  const origenSup = margen + 4
+  const origenInf = origenSup + altoSup + separacion + fondo(inf)
+  return {
+    sup,
+    inf,
+    origenSup,
+    origenInf,
+    semiancho: Math.max(sup.semiancho, inf.semiancho) + 8 + margen,
+    altoSup: origenSup + altoSup + margen,
+    alto: origenInf + margen,
+  }
+}
+
+/** Transformación SVG de una pieza dentro de su grupo de arcada. */
+export const transformarPieza = (p: PiezaColocada) =>
+  `translate(${p.x.toFixed(2)} ${p.y.toFixed(2)}) rotate(${p.angulo.toFixed(2)}) scale(${p.escalaX.toFixed(3)} ${p.escalaY.toFixed(3)})`
+
+/** Posición del número FDI en el lienzo: hacia afuera de la pieza, siguiendo la normal. */
+export function posicionEtiqueta(d: Disposicion, p: PiezaColocada, inferior: boolean, distancia = 9.5) {
+  const x = p.x + p.nx * distancia
+  const y = p.y + p.ny * distancia
+  return inferior ? { x, y: d.origenInf - y } : { x, y: d.origenSup + y }
+}
