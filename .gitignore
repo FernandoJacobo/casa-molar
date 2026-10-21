@@ -1,0 +1,32 @@
+# Nuxt
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Dependencias
+node_modules
+
+# Logs
+logs
+*.log
+
+# Varios
+.DS_Store
+.idea
+.vscode/*
+
+# Entorno
+.env
+.env.*
+!.env.example
+
+# QA y material para redes (pesado)
+qa/capturas/
+test-results/
+playwright-report/
+social/_frames/
+social/capturas/
+social/video/
