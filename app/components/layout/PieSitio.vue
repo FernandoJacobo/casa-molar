@@ -192,7 +192,7 @@ const anio = new Date().getFullYear()
 /* El nombre gigante queda cortado por el borde inferior. */
 .pie__gigante {
   font-family: var(--font-serif);
-  font-size: clamp(4rem, 18.5vw, 20rem);
+  font-size: clamp(3.4rem, 16vw, 17.5rem);
   line-height: 0.8;
   letter-spacing: -0.045em;
   white-space: nowrap;
