@@ -117,7 +117,7 @@ function alTeclear(e: KeyboardEvent, i: number) {
   justify-content: space-between;
   gap: 0.4rem;
   min-height: 8.5rem;
-  padding: 0.75rem;
+  padding: 0.75rem clamp(0.45rem, 2vw, 0.75rem);
   border: 0;
   border-right: 1.5px solid var(--color-tinta);
   background: var(--color-marfil);
@@ -156,6 +156,8 @@ function alTeclear(e: KeyboardEvent, i: number) {
   font-size: clamp(0.95rem, 1.8vw, 1.4rem);
   line-height: 1.05;
   hyphens: auto;
+  overflow-wrap: anywhere;
+  max-width: 100%;
 }
 
 .visita__rango {

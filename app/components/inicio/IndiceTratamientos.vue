@@ -95,7 +95,7 @@ function alternar(slug: string) {
 
 .fila__linea {
   display: grid;
-  grid-template-columns: 3.2rem 1fr auto 2.75rem;
+  grid-template-columns: 3.2rem minmax(0, 1fr) auto 2.75rem;
   align-items: center;
   gap: 0.25rem 0.75rem;
   min-height: 4.2rem;
@@ -110,6 +110,8 @@ function alternar(slug: string) {
 .fila__nombre {
   font-size: clamp(1.35rem, 2.6vw, 2.1rem);
   line-height: 1.05;
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 .fila__nombre a {

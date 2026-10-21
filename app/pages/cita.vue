@@ -27,13 +27,13 @@ const MOTIVOS: Motivo[] = [
 ]
 
 const q = (k: string) => (typeof route.query[k] === 'string' ? (route.query[k] as string) : '')
-const motivo = ref(MOTIVOS.some(m => m.valor === q('motivo')) ? q('motivo') : 'valoracion')
-const piezaQuery = Number(q('pieza')) || null
-const planQuery = q('plan')
+// La página se prerenderiza sin query: los valores de la URL se aplican al montar.
+const motivo = ref('valoracion')
+const piezaQuery = ref<number | null>(null)
 const m = computed(() => MOTIVOS.find(x => x.valor === motivo.value)!)
 
 /* ---------- Profesional ---------- */
-const profesional = ref<string>(profesionalPorId(q('profesional')) ? q('profesional') : 'cualquiera')
+const profesional = ref('cualquiera')
 const profesionalesMotivo = computed(() => equipo.filter(p => !m.value.tratamiento || p.tratamientos.includes(m.value.tratamiento)))
 watch(motivo, () => {
   if (profesional.value !== 'cualquiera' && !profesionalesMotivo.value.some(p => p.id === profesional.value)) profesional.value = 'cualquiera'
@@ -46,6 +46,12 @@ onMounted(() => {
   const d = new Date()
   hoy.value = d
   ahora.value = { iso: fechaISO(d), minutos: momentoEnClinica(d, site.zonaHoraria).minutos }
+  if (MOTIVOS.some(x => x.valor === q('motivo'))) motivo.value = q('motivo')
+  if (profesionalPorId(q('profesional'))) profesional.value = q('profesional')
+  piezaQuery.value = Number(q('pieza')) || null
+  const plan = q('plan').split(',').map(s => tratamientoPorSlug(s)?.nombre).filter(Boolean)
+  if (piezaQuery.value) notas.value = `Quiero revisar la pieza ${piezaQuery.value}.`
+  else if (plan.length) notas.value = `Plan: ${plan.join(', ')}.`
   const f = q('fecha')
   if (f && dias.value.some(x => x.iso === f && !x.cerrado)) fecha.value = f
 })
@@ -88,7 +94,7 @@ const mesDe = (d: DiaAgenda) => format(d.fecha, 'MMM', { locale: es }).replace('
 const nombre = ref('')
 const telefono = ref('')
 const correo = ref('')
-const notas = ref(piezaQuery ? `Quiero revisar la pieza ${piezaQuery}.` : planQuery ? `Plan: ${planQuery.split(',').map(s => tratamientoPorSlug(s)?.nombre).filter(Boolean).join(', ')}.` : '')
+const notas = ref('')
 const tocado = reactive({ nombre: false, telefono: false, correo: false })
 
 const errores = computed(() => ({
@@ -126,7 +132,7 @@ function confirmar() {
     telefono: telefono.value.replace(/\D/g, ''),
     correo: correo.value.trim(),
     notas: notas.value.trim(),
-    pieza: piezaQuery,
+    pieza: piezaQuery.value,
     creada,
   }
   guardar(cita)

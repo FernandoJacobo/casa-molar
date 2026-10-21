@@ -42,6 +42,7 @@ defineProps<{ claro?: boolean }>()
   font-family: var(--font-serif);
   font-size: 1.45rem;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .logo__sufijo {

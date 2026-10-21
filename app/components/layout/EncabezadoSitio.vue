@@ -110,6 +110,13 @@ onKeyStroke('Escape', () => (abierto.value = false))
   padding-inline: 1.1rem;
 }
 
+/* Tableta: sin los números FDI para que quepa todo en una línea. */
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .encabezado__codigo {
+    display: none;
+  }
+}
+
 @media (max-width: 47.99rem) {
   .encabezado__cta {
     display: none;
