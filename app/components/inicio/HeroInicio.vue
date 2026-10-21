@@ -1,227 +1,161 @@
 <script setup lang="ts">
 import { site } from '~/config/site'
+
+const estado = useEstadoClinica()
 </script>
 
 <template>
   <section class="hero" aria-labelledby="hero-titulo">
     <div class="contenedor hero__rejilla">
-      <p class="seccion-num hero__num"><b>§ 11</b><span>{{ site.direccion.colonia }}, {{ site.direccion.ciudad }}</span></p>
-      <h1 id="hero-titulo" class="hero__titulo">
-        <span class="hero__linea">Cuidamos</span>
-        <span class="hero__linea hero__linea--2">las <em>32.</em></span>
-      </h1>
+      <div class="hero__texto">
+        <p class="etiqueta hero__lugar">Odontología general y especialidades · {{ site.direccion.colonia }}, {{ site.direccion.ciudad }}</p>
+        <h1 id="hero-titulo" class="hero__titulo">Cuidamos las <em>32.</em></h1>
+        <p class="hero__entrada">
+          Te explicamos lo que vemos antes de hacer nada, con precio por escrito. Y si algo no lo necesitas, te lo decimos.
+        </p>
 
-      <p class="hero__entrada">
-        Odontología de barrio. Te explicamos lo que vemos antes de hacer nada, y si algo no lo necesitas,
-        te lo decimos.
-      </p>
+        <div class="hero__acciones">
+          <NuxtLink to="/cita" class="boton boton--primario">Agendar valoración</NuxtLink>
+          <NuxtLink to="/precios" class="boton boton--claro">Ver precios</NuxtLink>
+        </div>
 
-      <div class="hero__cta">
-        <NuxtLink to="/cita" class="hero__tarjeta-enlace">
-          <UiTarjetaCita etiqueta="Primera cita" folio="0001" :giro="-2.5">
-            <span class="hero__tarjeta-titulo">Agendar valoración</span>
-            <span class="hero__tarjeta-dato mono">45 min · $450 · se descuenta si inicias tratamiento</span>
-            <span class="hero__tarjeta-flecha" aria-hidden="true">→</span>
-          </UiTarjetaCita>
-        </NuxtLink>
-        <NuxtLink to="/precios" class="enlace hero__secundario">o mira primero la lista de precios</NuxtLink>
+        <dl class="hero__datos">
+          <div>
+            <dt class="etiqueta">Valoración</dt>
+            <dd>45 min · $450 <small>se descuenta si inicias tratamiento</small></dd>
+          </div>
+          <div>
+            <dt class="etiqueta">Hoy</dt>
+            <dd>{{ estado ? estado.titulo : 'L–V 9:00–19:00' }}<small v-if="estado?.detalle">{{ estado.detalle }}</small></dd>
+          </div>
+          <div>
+            <dt class="etiqueta">Urgencias</dt>
+            <dd><a :href="`tel:${site.urgencias.enlace}`">{{ site.urgencias.visible }}</a></dd>
+          </div>
+        </dl>
       </div>
-    </div>
 
-    <figure class="hero__arcada">
-      <SvgArcadaSvg modo="superior" destello numeros />
-      <figcaption class="etiqueta hero__pie">Fig. 1 — Arcada superior, vista oclusal. 16 de las 32.</figcaption>
-    </figure>
-    <p class="hero__nota" aria-hidden="true">
-      <span>esta es la 11</span>
-      <svg viewBox="0 0 80 60"><path d="M4,6 C30,4 56,16 70,48 M62,44 L70,49 L72,39" /></svg>
-    </p>
+      <figure class="hero__panel">
+        <SvgArcadaSvg modo="superior" destello numeros class="hero__arcada" />
+        <figcaption class="hero__pie">
+          <span class="etiqueta">Arcada superior · vista oclusal</span>
+          <span>16 de tus 32 piezas. Cada una tiene número y la revisamos una por una.</span>
+        </figcaption>
+      </figure>
+    </div>
   </section>
 </template>
 
 <style scoped>
 .hero {
-  position: relative;
-  overflow: hidden;
-  padding-top: clamp(1.5rem, 4vw, 3rem);
-  min-height: min(56rem, 92vh);
+  padding-block: clamp(2rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5.5rem);
+  background: var(--color-blanco);
 }
 
 .hero__rejilla {
-  position: relative;
-  z-index: 2;
   display: grid;
-  gap: 1.4rem;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero__lugar {
+  color: var(--color-petroleo);
 }
 
 .hero__titulo {
-  font-size: clamp(4.2rem, 15.5vw, 14rem);
-  line-height: 0.86;
-  letter-spacing: -0.045em;
-  /* El titular se sale de su caja hacia la derecha y se monta en la arcada. */
-  width: max-content;
-  max-width: none;
-}
-
-.hero__linea {
-  display: block;
-}
-
-.hero__linea--2 {
-  padding-left: 0.62em;
+  margin-top: 1rem;
+  font-size: clamp(2.9rem, 7vw, 5.4rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
 }
 
 .hero__titulo em {
-  font-style: normal;
-  color: var(--color-coral-titular);
+  font-style: italic;
+  color: var(--color-petroleo);
 }
 
 .hero__entrada {
-  max-width: 30ch;
-  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-  line-height: 1.45;
-}
-
-.hero__cta {
-  display: grid;
-  justify-items: start;
-  gap: 1.2rem;
-  margin-top: 0.5rem;
-}
-
-.hero__tarjeta-enlace {
-  display: block;
-  width: min(22rem, 100%);
-  text-decoration: none;
-  transition: translate 0.15s var(--ease-suave);
-}
-
-.hero__tarjeta-enlace :deep(.tarjeta) {
-  transition: box-shadow 0.15s var(--ease-suave), rotate 0.3s var(--ease-suave);
-}
-
-.hero__tarjeta-enlace:hover :deep(.tarjeta) {
-  rotate: -1deg;
-}
-
-.hero__tarjeta-enlace:active {
-  translate: 3px 4px;
-}
-
-.hero__tarjeta-enlace:active :deep(.tarjeta) {
-  box-shadow: 0 0 0 var(--color-arena);
-}
-
-.hero__tarjeta-titulo {
-  display: block;
-  font-family: var(--font-serif);
-  font-size: 1.85rem;
-  line-height: 1.05;
-  padding-top: 0.3rem;
-}
-
-.hero__tarjeta-dato {
-  display: block;
-  margin-top: 0.55rem;
-  font-size: 0.78rem;
-  line-height: 2rem;
+  margin-top: 1.25rem;
+  max-width: 34ch;
+  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+  line-height: 1.55;
   color: var(--color-tinta-suave);
 }
 
-.hero__tarjeta-flecha {
-  position: absolute;
-  right: 1.1rem;
-  bottom: 0.9rem;
-  font-size: 1.6rem;
-  color: var(--color-coral-oscuro);
+.hero__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.hero__datos {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-linea);
+}
+
+.hero__datos .etiqueta {
+  color: var(--color-tinta-suave);
+}
+
+.hero__datos dd {
+  margin-top: 0.25rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero__datos small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--color-tinta-suave);
+}
+
+.hero__datos a {
+  color: var(--color-petroleo);
+  text-decoration: none;
+}
+
+.hero__panel {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border-radius: 24px;
+  background: var(--color-niebla);
 }
 
 .hero__arcada {
-  position: relative;
-  z-index: 1;
-  width: 128vw;
-  margin: -2rem 0 -38vw -2vw;
-  rotate: -9deg;
+  width: 100%;
+  max-width: 34rem;
+  margin-inline: auto;
 }
 
 .hero__pie {
-  position: absolute;
-  top: 34%;
-  left: 40%;
-  rotate: 14deg;
+  display: grid;
+  gap: 0.25rem;
+  max-width: 36ch;
+  font-size: 0.92rem;
   color: var(--color-tinta-suave);
-  max-width: 16ch;
-  display: none;
 }
 
-.hero__nota {
-  display: none;
+.hero__pie .etiqueta {
+  color: var(--color-petroleo);
 }
 
-@media (min-width: 48rem) {
-  .hero__arcada {
-    position: absolute;
-    width: min(72vw, 76rem);
-    right: -14vw;
-    top: 8%;
-    margin: 0;
-    rotate: -14deg;
-  }
-
-  .hero__pie {
-    display: block;
-  }
-
-  .hero__rejilla {
-    padding-bottom: clamp(4rem, 9vw, 8rem);
-  }
-
-  .hero__titulo {
-    margin-top: 0.5rem;
+@media (min-width: 40rem) {
+  .hero__datos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 64rem) {
   .hero__rejilla {
-    grid-template-columns: minmax(0, 30rem) 1fr;
-    column-gap: 3rem;
-  }
-
-  .hero__num,
-  .hero__titulo {
-    grid-column: 1 / -1;
-  }
-
-  .hero__arcada {
-    width: min(66vw, 70rem);
-    right: -12vw;
-    top: 4%;
-  }
-
-  .hero__nota {
-    display: flex;
-    position: absolute;
-    z-index: 2;
-    right: calc(max(-12vw, -10rem) + min(33vw, 35rem) + 5rem);
-    top: 1.5rem;
-    align-items: flex-start;
-    gap: 0.2rem;
-    font-family: var(--font-serif);
-    font-size: 1.3rem;
-    rotate: -4deg;
-  }
-
-  .hero__nota svg {
-    width: 4.5rem;
-    margin-top: 0.8rem;
-  }
-
-  .hero__nota path {
-    fill: none;
-    stroke: var(--color-tinta);
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(3rem, 6vw, 6rem);
   }
 }
 </style>

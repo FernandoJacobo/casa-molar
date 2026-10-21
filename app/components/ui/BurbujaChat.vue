@@ -34,8 +34,8 @@ withDefaults(defineProps<{
 .burbuja__texto {
   margin: 0;
   padding: 0.85rem 1.05rem;
-  background: var(--color-marfil);
-  border: 1.5px solid var(--color-tinta);
+  background: var(--color-blanco);
+  border: 1px solid var(--color-linea);
   border-radius: 18px 18px 18px 3px;
   font-size: 1.02rem;
   line-height: 1.45;
@@ -43,7 +43,7 @@ withDefaults(defineProps<{
 
 .burbuja--der .burbuja__texto {
   background: var(--color-tinta);
-  color: var(--color-marfil);
+  color: var(--color-blanco);
   border-radius: 18px 18px 3px 18px;
 }
 
@@ -69,6 +69,6 @@ withDefaults(defineProps<{
 }
 
 .burbuja__ficticia {
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 </style>

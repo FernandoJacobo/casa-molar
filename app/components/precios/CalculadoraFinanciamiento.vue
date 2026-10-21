@@ -98,7 +98,7 @@ function usarPlan() {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  border-bottom: 1.5px solid var(--color-tinta);
+  border-bottom: 1px solid var(--color-linea-fuerte);
 }
 
 .fin__entrada .mono {
@@ -119,8 +119,8 @@ function usarPlan() {
 }
 
 .fin__entrada:focus-within {
-  border-bottom-color: var(--color-coral-oscuro);
-  box-shadow: 0 1.5px 0 var(--color-coral-oscuro);
+  border-bottom-color: var(--color-petroleo-oscuro);
+  box-shadow: 0 1.5px 0 var(--color-petroleo-oscuro);
 }
 
 .fin__entrada input:focus-visible {
@@ -128,7 +128,7 @@ function usarPlan() {
 }
 
 .fin__rango {
-  accent-color: var(--color-coral-oscuro);
+  accent-color: var(--color-petroleo-oscuro);
   width: 100%;
   min-height: 2.75rem;
 }
@@ -157,10 +157,10 @@ function usarPlan() {
   align-items: center;
   min-height: 2.75rem;
   padding: 0 0.85rem;
-  border: 1.5px solid var(--color-tinta);
-  border-radius: 1px 1px 12px 12px;
+  border: 1px solid var(--color-linea);
+  border-radius: 8px;
   cursor: pointer;
-  background: var(--color-marfil);
+  background: var(--color-blanco);
 }
 
 .fin__plazo.is-tasa {
@@ -168,23 +168,24 @@ function usarPlan() {
 }
 
 .fin__plazo.is-elegido {
-  background: var(--color-tinta);
-  color: var(--color-marfil);
+  background: var(--color-petroleo);
+  color: var(--color-blanco);
 }
 
 .fin__plazo:has(input:focus-visible) {
-  outline: 2.5px solid var(--color-coral-oscuro);
+  outline: 2.5px solid var(--color-petroleo-oscuro);
   outline-offset: 2px;
 }
 
 .fin__resultado {
-  padding: 1.5rem;
+  padding: 1.75rem;
+  border-radius: var(--radius-tarjeta);
   background: var(--color-tinta);
-  color: var(--color-marfil);
+  color: var(--color-blanco);
 }
 
 .fin__resultado .etiqueta {
-  color: var(--color-arena);
+  color: var(--color-celeste);
 }
 
 .fin__mensualidad {
@@ -192,19 +193,19 @@ function usarPlan() {
   font-size: clamp(2.8rem, 7vw, 4.6rem);
   line-height: 1;
   margin-top: 0.3rem;
-  color: var(--color-coral);
+  color: var(--color-celeste);
   font-variant-numeric: tabular-nums;
 }
 
 .fin__x {
   margin-top: 0.4rem;
   font-size: 0.8rem;
-  color: var(--color-arena);
+  color: var(--color-linea);
 }
 
 .fin__desglose {
   margin-top: 1.25rem;
-  border-top: 1px solid rgb(244 236 221 / 0.3);
+  border-top: 1px solid rgb(255 255 255 / 0.3);
 }
 
 .fin__desglose div {
@@ -212,7 +213,7 @@ function usarPlan() {
   justify-content: space-between;
   gap: 1rem;
   padding-block: 0.45rem;
-  border-bottom: 1px dotted rgb(244 236 221 / 0.25);
+  border-bottom: 1px dotted rgb(255 255 255 / 0.25);
 }
 
 .fin__total {
@@ -221,14 +222,14 @@ function usarPlan() {
 
 .fin__alerta {
   margin-top: 0.8rem;
-  color: var(--color-coral);
+  color: var(--color-celeste);
   font-size: var(--text-chico);
 }
 
 .fin__aviso {
   margin-top: 0.8rem;
   font-size: 0.8rem;
-  color: var(--color-arena);
+  color: var(--color-linea);
 }
 
 @media (min-width: 64rem) {

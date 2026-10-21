@@ -4,37 +4,45 @@
 @theme {
   --*: initial;
 
-  --color-marfil: #F4ECDD;
-  --color-hueso: #E9DEC8;
-  --color-arena: #D9C9A8;
-  --color-arena-oscura: #A8946C;
-  --color-tinta: #1D2326;
-  --color-tinta-suave: #4A5154;
-  --color-coral: #E2674D;
-  /* Coral para texto grande sobre marfil (≥ 3:1). */
-  --color-coral-titular: #CC573E;
-  --color-coral-oscuro: #9E3E2A;
-  --color-menta: #BFE0D4;
+  /* Clínica: blanco, niebla y petróleo. Un solo tema. */
+  --color-blanco: #FFFFFF;
+  --color-niebla: #F2F7F7;
+  --color-agua: #E2EFEF;
+  --color-linea: #D9E4E6;
+  /* Bordes de controles de formulario (≥ 3:1 sobre blanco). */
+  --color-linea-fuerte: #738A90;
+  --color-tinta: #0F2A31;
+  --color-tinta-suave: #4A6066;
+  --color-petroleo: #0E6A77;
+  --color-petroleo-oscuro: #0A4C56;
+  --color-menta: #D8EEE6;
+  /* Acento claro para texto sobre fondos oscuros. */
+  --color-celeste: #8FC4D0;
+  /* Errores de formulario y acciones destructivas (AA sobre blanco). */
+  --color-error: #B42318;
+  /* Solo para ilustración anatómica (encía). */
+  --color-encia: #EBC4BD;
+  --color-encia-oscura: #C98F86;
   --color-placa: #0E181D;
   --color-placa-linea: #8FC4D0;
   --color-placa-texto: #CFE3E8;
   --color-transparent: transparent;
   --color-current: currentColor;
 
-  --font-serif: "Young Serif", Georgia, serif;
-  --font-sans: "Hanken Grotesk", Arial, sans-serif;
-  --font-mono: "Spline Sans Mono", "Courier New", monospace;
+  --font-serif: "Newsreader", Georgia, serif;
+  --font-sans: "Figtree", "Segoe UI", Arial, sans-serif;
+  /* Cifras y códigos: la misma sans con números tabulares. */
+  --font-mono: "Figtree", "Segoe UI", Arial, sans-serif;
 
-  --text-etiqueta: 0.72rem;
+  --text-etiqueta: 0.75rem;
   --text-chico: 0.875rem;
-  --text-base: 1.06rem;
+  --text-base: 1.0625rem;
   --text-medio: 1.25rem;
 
-  --radius-recto: 2px;
-  --radius-tarjeta: 6px;
+  --radius-recto: 8px;
+  --radius-tarjeta: 16px;
 
-  --shadow-carton: 3px 4px 0 var(--color-arena);
-  --shadow-carton-tinta: 3px 4px 0 var(--color-tinta);
+  --shadow-suave: 0 1px 2px rgb(15 42 49 / 0.06), 0 8px 24px -8px rgb(15 42 49 / 0.12);
 
   --spacing: 0.25rem;
 
@@ -70,12 +78,13 @@
 
   body {
     margin: 0;
-    background: var(--color-marfil);
+    background: var(--color-blanco);
     color: var(--color-tinta);
     font-family: var(--font-sans);
     font-size: var(--text-base);
     line-height: 1.55;
     font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     padding-bottom: var(--barra-movil);
     overflow-x: clip;
@@ -85,22 +94,11 @@
     body { font-size: 1.125rem; }
   }
 
-  /* Grano de papel muy leve sobre el marfil. */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 60;
-    pointer-events: none;
-    opacity: 0.06;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.13 0 0 0 0 0.15 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-  }
-
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
     margin: 0;
     text-wrap: balance;
   }
@@ -120,9 +118,9 @@
   button { cursor: pointer; }
 
   :focus-visible {
-    outline: 2.5px solid var(--color-coral-oscuro);
+    outline: 2.5px solid var(--color-petroleo);
     outline-offset: 3px;
-    border-radius: 1px;
+    border-radius: 4px;
   }
 
   ::selection {
@@ -130,10 +128,6 @@
     color: var(--color-tinta);
   }
 
-  /* Barra de desplazamiento con los colores de la casa. */
-  html {
-    scrollbar-color: var(--color-arena-oscura) var(--color-hueso);
-  }
 }
 
 @layer components {
@@ -154,12 +148,12 @@
     border: 0;
   }
 
-  /* Etiqueta de datos: mono, mayúsculas, tracking abierto. */
+  /* Etiqueta: versalitas de la sans, tracking abierto. */
   .etiqueta {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: var(--text-etiqueta);
-    font-weight: 400;
-    letter-spacing: 0.08em;
+    font-weight: 600;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
     font-variant-numeric: tabular-nums;
     line-height: 1.3;
@@ -170,29 +164,33 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* Número de sección con código de pieza FDI: "§ 12". */
+  /* Rótulo de sección con una raya corta en petróleo. */
   .seccion-num {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: var(--text-etiqueta);
-    letter-spacing: 0.08em;
+    font-weight: 600;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
     display: inline-flex;
-    align-items: baseline;
-    gap: 0.6em;
-    color: var(--color-tinta-suave);
+    align-items: center;
+    gap: 0.7em;
+    color: var(--color-petroleo);
   }
 
-  .seccion-num b {
-    font-weight: 700;
-    color: var(--color-coral-oscuro);
+  .seccion-num::before {
+    content: "";
+    width: 1.5rem;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
   }
 
   .h2 {
-    font-size: clamp(2.4rem, 6vw, 4.6rem);
+    font-size: clamp(2.1rem, 4.6vw, 3.6rem);
   }
 
   .h3 {
-    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-size: clamp(1.4rem, 2.6vw, 1.85rem);
     line-height: 1.08;
   }
 
@@ -202,94 +200,84 @@
     max-width: 36ch;
   }
 
-  /* Enlace de texto con subrayado de lápiz. */
   .enlace {
+    color: var(--color-petroleo);
     text-decoration: underline;
-    text-decoration-color: var(--color-coral);
-    text-decoration-thickness: 2px;
+    text-decoration-color: rgb(14 106 119 / 0.35);
+    text-decoration-thickness: 1.5px;
     text-underline-offset: 0.22em;
     font-weight: 500;
     transition: text-decoration-color 0.2s;
   }
 
   .enlace:hover {
-    text-decoration-color: var(--color-tinta);
+    color: var(--color-petroleo-oscuro);
+    text-decoration-color: currentColor;
   }
 
-  /* Regla de medición: ticks finos a lo largo de un borde. */
+  /* Línea divisoria fina. */
   .regla {
-    height: 10px;
-    background-image:
-      repeating-linear-gradient(90deg, var(--color-arena-oscura) 0 1px, transparent 1px 10px),
-      repeating-linear-gradient(90deg, var(--color-arena-oscura) 0 1px, transparent 1px 50px);
-    background-size: 100% 5px, 100% 10px;
-    background-repeat: no-repeat;
-    background-position: 0 100%, 0 100%;
-    opacity: 0.7;
+    height: 1px;
+    background: var(--color-linea);
   }
 }
 
-/* Botón de cartón: se hunde al presionar. */
+/* Botones. */
 @layer components {
   .boton {
     --fondo: var(--color-tinta);
-    --texto: var(--color-marfil);
-    --sombra: var(--color-coral);
+    --texto: var(--color-blanco);
+    --borde: var(--color-tinta);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.6em;
     min-height: 3rem;
-    padding: 0.7rem 1.35rem;
-    border: 1.5px solid var(--color-tinta);
-    border-radius: var(--radius-recto);
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
     background: var(--fondo);
     color: var(--texto);
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1rem;
     line-height: 1.1;
     text-decoration: none;
-    box-shadow: 3px 4px 0 var(--sombra);
-    transition: transform 0.12s var(--ease-suave), box-shadow 0.12s var(--ease-suave), background-color 0.2s;
+    transition: background-color 0.18s, border-color 0.18s, color 0.18s;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
   }
 
   .boton:hover {
-    --fondo: #2B3337;
-  }
-
-  .boton:active,
-  .boton[aria-pressed="true"] {
-    transform: translate(3px, 4px);
-    box-shadow: 0 0 0 var(--sombra);
+    --fondo: #1C3B43;
+    --borde: #1C3B43;
   }
 
   .boton--claro {
-    --fondo: var(--color-marfil);
-    --texto: var(--color-tinta);
-    --sombra: var(--color-tinta);
+    --fondo: var(--color-blanco);
+    --texto: var(--color-petroleo-oscuro);
+    --borde: var(--color-linea-fuerte);
   }
 
   .boton--claro:hover {
-    --fondo: var(--color-hueso);
+    --fondo: var(--color-niebla);
+    --borde: var(--color-petroleo);
   }
 
-  .boton--coral {
-    --fondo: var(--color-coral);
-    --texto: var(--color-tinta);
-    --sombra: var(--color-tinta);
+  .boton--primario {
+    --fondo: var(--color-petroleo);
+    --texto: var(--color-blanco);
+    --borde: var(--color-petroleo);
   }
 
-  .boton--coral:hover {
-    --fondo: #E8785F;
+  .boton--primario:hover {
+    --fondo: var(--color-petroleo-oscuro);
+    --borde: var(--color-petroleo-oscuro);
   }
 
   .boton:disabled,
   .boton[aria-disabled="true"] {
     opacity: 0.45;
     cursor: not-allowed;
-    transform: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -297,7 +285,7 @@
   }
 }
 
-/* Impresión: sin cinta, encabezado, pie, barra móvil ni grano. */
+/* Impresión: sin cinta, encabezado, pie ni barra móvil. */
 @media print {
   .cinta,
   .encabezado,
@@ -310,10 +298,6 @@
   body {
     padding: 0;
     background: #fff;
-  }
-
-  body::before {
-    display: none;
   }
 
   @page {

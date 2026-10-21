@@ -118,7 +118,6 @@ defineExpose({ implante })
 }
 
 .pano__piezas {
-  filter: url(#trazo);
 }
 
 .pano__contorno {
@@ -156,7 +155,7 @@ defineExpose({ implante })
 }
 
 .pano__marcas circle {
-  fill: var(--color-coral);
+  fill: var(--color-placa-linea);
   stroke: var(--color-placa);
   stroke-width: 2;
 }

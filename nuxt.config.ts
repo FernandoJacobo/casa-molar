@@ -35,7 +35,7 @@ export default defineNuxtConfig({
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
         { name: 'format-detection', content: 'telephone=no' },
-        { name: 'theme-color', content: '#F4ECDD' },
+        { name: 'theme-color', content: '#FFFFFF' },
       ],
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     },
@@ -43,11 +43,10 @@ export default defineNuxtConfig({
 
   fonts: {
     families: [
-      { name: 'Young Serif', provider: 'google', weights: [400] },
-      { name: 'Hanken Grotesk', provider: 'google', weights: [400, 500, 700] },
-      { name: 'Spline Sans Mono', provider: 'google', weights: [400, 700] },
+      { name: 'Newsreader', provider: 'google', weights: [500] },
+      { name: 'Figtree', provider: 'google', weights: [400, 600, 700] },
     ],
-    defaults: { subsets: ['latin'], styles: ['normal'], fallbacks: { 'serif': ['Georgia'], 'sans-serif': ['Arial'], 'monospace': ['Courier New'] } },
+    defaults: { subsets: ['latin'], styles: ['normal'], fallbacks: { 'serif': ['Georgia'], 'sans-serif': ['Arial'] } },
   },
 
   typescript: { strict: true, typeCheck: false },

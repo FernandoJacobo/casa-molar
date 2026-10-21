@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { equipo } from '~/data/equipo'
-import { tonoPorCodigo } from '~/data/tonos'
 import { tratamientoPorSlug } from '~/data/tratamientos'
 
 useSeoPagina('Equipo', 'Quiénes te atienden en Casa Molar (demo): cuatro profesionales ficticios, qué hace cada quien y qué días da consulta.')
@@ -11,14 +10,13 @@ const DIAS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
 <template>
   <div class="eq contenedor">
     <UiCabezaSeccion as="h1" num="18" rotulo="Equipo" titulo="Quiénes te atienden.">
-      Cuatro personas ficticias, dibujadas a mano. Si llegas con miedo, cualquiera de ellas te va a explicar todo antes de empezar.
+      Cuatro especialistas (ficticios). Si llegas con miedo, cualquiera de ellas te va a explicar todo antes de empezar.
     </UiCabezaSeccion>
 
     <ol class="eq__lista">
       <li v-for="(p, i) in equipo" :key="p.id" class="pro" :class="{ 'pro--der': i % 2 === 1 }">
         <div class="pro__retrato">
           <SvgAvatarSvg :avatar="p.avatar" :nombre="p.nombre" />
-          <UiPestanaTono class="pro__tono" :codigo="p.tono" :hex="tonoPorCodigo(p.tono)!.hex" tamano="grande" aria-hidden="true" />
         </div>
         <div class="pro__texto">
           <p class="etiqueta pro__rol">{{ p.rol }}</p>
@@ -61,7 +59,7 @@ const DIAS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
   display: grid;
   gap: 1.5rem;
   padding-top: 2rem;
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
 }
 
 .pro__retrato {
@@ -69,15 +67,8 @@ const DIAS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
   width: min(16rem, 70%);
 }
 
-.pro__tono {
-  position: absolute;
-  right: -1.5rem;
-  bottom: 12%;
-  rotate: -10deg;
-}
-
 .pro__rol {
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .pro__nombre {
@@ -90,7 +81,7 @@ const DIAS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
   font-family: var(--font-serif);
   font-size: clamp(1.3rem, 2.4vw, 1.7rem);
   line-height: 1.2;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
   max-width: 28ch;
 }
 
@@ -105,7 +96,7 @@ const DIAS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
   grid-template-columns: 7rem 1fr;
   gap: 1rem;
   padding-bottom: 0.4rem;
-  border-bottom: 1px dotted var(--color-arena-oscura);
+  border-bottom: 1px dotted var(--color-linea-fuerte);
 }
 
 .pro__dias {
@@ -150,8 +141,8 @@ const DIAS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
   align-items: center;
   min-height: 2.75rem;
   padding: 0 0.8rem;
-  border: 1.5px solid var(--color-tinta);
-  border-radius: 1px 1px 12px 12px;
+  border: 1px solid var(--color-linea);
+  border-radius: 8px;
   text-decoration: none;
   font-size: 0.92rem;
 }

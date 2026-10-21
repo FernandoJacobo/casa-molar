@@ -70,7 +70,6 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
     </div>
 
     <div class="sim__resultado">
-      <p class="sim__gigante" aria-hidden="true">{{ codigoMostrado }}</p>
       <div class="sim__sonrisa">
         <SvgSonrisaSvg :tono="hexMostrado" :titulo="`Sonrisa ilustrada en el tono ${codigoMostrado}`" />
       </div>
@@ -98,7 +97,7 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
         Simulación ilustrativa en pantalla: los colores varían según tu monitor y los resultados reales, según
         cada persona. Requiere valoración. Precio ilustrativo ({{ pesos(precioSesion) }} por sesión).
       </p>
-      <NuxtLink :to="{ path: '/cita', query: { motivo: 'blanqueamiento' } }" class="boton boton--coral sim__cta">Agendar valoración de blanqueamiento</NuxtLink>
+      <NuxtLink :to="{ path: '/cita', query: { motivo: 'blanqueamiento' } }" class="boton boton--primario sim__cta">Agendar valoración de blanqueamiento</NuxtLink>
     </div>
   </div>
 </template>
@@ -122,18 +121,23 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
   gap: 0.5rem;
   min-height: 3rem;
   padding: 0.4rem 0.75rem;
-  border: 1.5px solid var(--color-tinta);
-  background: var(--color-marfil);
+  border: 1px solid var(--color-linea);
+  background: var(--color-blanco);
   text-align: left;
+}
+
+.sim__modo-btn:first-child {
+  border-radius: 10px 0 0 10px;
 }
 
 .sim__modo-btn + .sim__modo-btn {
   border-left: 0;
+  border-radius: 0 10px 10px 0;
 }
 
 .sim__modo-btn[aria-pressed="true"] {
-  background: var(--color-tinta);
-  color: var(--color-marfil);
+  background: var(--color-petroleo);
+  color: var(--color-blanco);
 }
 
 .sim__modo-btn b {
@@ -155,9 +159,8 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
   width: 100%;
   min-height: 4.6rem;
   padding: 0 0 0.6rem;
-  border: 1.5px solid var(--color-tinta);
-  border-top-width: 0.9rem;
-  border-radius: 2px 2px 46% 46% / 2px 2px 26% 26%;
+  border: 1px solid rgb(15 42 49 / 0.12);
+  border-radius: 10px;
   background: var(--hex);
   transition: translate 0.2s var(--ease-suave);
 }
@@ -167,18 +170,18 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
 }
 
 .sim__muestra.is-rango {
-  box-shadow: inset 0 -4px 0 rgb(226 103 77 / 0.35);
+  box-shadow: inset 0 -3px 0 rgb(14 106 119 / 0.45);
 }
 
 .sim__muestra.is-actual,
 .sim__muestra.is-meta {
   translate: 0 -6px;
-  outline: 2.5px solid var(--color-tinta);
+  outline: 2px solid var(--color-tinta);
   outline-offset: 2px;
 }
 
 .sim__muestra.is-meta {
-  outline-color: var(--color-coral);
+  outline-color: var(--color-petroleo);
 }
 
 .sim__codigo {
@@ -187,17 +190,14 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
 }
 
 .sim__marca {
-  position: absolute;
-  top: -0.82rem;
-  font-size: 0.6rem;
+  margin-top: 0.15rem;
+  font-size: 0.55rem;
   font-weight: 700;
   color: var(--color-tinta);
 }
 
 .sim__marca--meta {
-  top: auto;
-  bottom: -1.5rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
   font-weight: 700;
 }
 
@@ -217,7 +217,7 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
   font-size: clamp(7rem, 26vw, 19rem);
   line-height: 1;
   letter-spacing: -0.06em;
-  color: var(--color-arena);
+  color: var(--color-linea);
   opacity: 0.55;
   pointer-events: none;
 }
@@ -239,16 +239,16 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
 .sim__ver button {
   min-height: 2.75rem;
   padding: 0 0.9rem;
-  border: 1.5px solid var(--color-tinta);
-  border-radius: 1px 1px 14px 14px;
-  background: var(--color-marfil);
+  border: 1px solid var(--color-linea);
+  border-radius: 8px;
+  background: var(--color-blanco);
   font-family: var(--font-mono);
   font-size: 0.82rem;
 }
 
 .sim__ver button[aria-pressed="true"] {
-  background: var(--color-tinta);
-  color: var(--color-marfil);
+  background: var(--color-petroleo);
+  color: var(--color-blanco);
 }
 
 .sim__datos {
@@ -258,7 +258,7 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
   grid-template-columns: repeat(3, auto);
   justify-content: start;
   gap: 0 clamp(1.5rem, 4vw, 3rem);
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
   padding-top: 0.9rem;
 }
 
@@ -270,7 +270,7 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
 }
 
 .sim__datos div:last-child dd {
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .sim__mensaje {
@@ -314,9 +314,7 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
     min-height: 2.6rem;
     height: 100%;
     padding: 0 0.9rem;
-    border-top-width: 1.5px;
-    border-left-width: 0.9rem;
-    border-radius: 2px 14px 14px 2px;
+    border-radius: 10px;
   }
 
   .sim--vertical .sim__muestra:hover {
@@ -325,7 +323,7 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
 
   .sim--vertical .sim__muestra.is-actual,
   .sim--vertical .sim__muestra.is-meta {
-    translate: 10px 0;
+    translate: 6px 0;
   }
 
   .sim--vertical .sim__marca {
@@ -336,7 +334,7 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
   }
 
   .sim--vertical .sim__marca--meta {
-    color: var(--color-coral-oscuro);
+    color: var(--color-petroleo-oscuro);
   }
 
   .sim--vertical .sim__resultado {

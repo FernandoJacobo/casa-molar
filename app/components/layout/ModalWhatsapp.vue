@@ -61,15 +61,15 @@ function alClicFuera(e: MouseEvent) {
   width: min(32rem, 100% - 2rem);
   max-height: calc(100dvh - 2rem);
   padding: 0;
-  border: 1.5px solid var(--color-tinta);
+  border: 1px solid var(--color-linea);
   border-radius: var(--radius-tarjeta);
-  background: var(--color-marfil);
+  background: var(--color-blanco);
   color: var(--color-tinta);
-  box-shadow: var(--shadow-carton-tinta);
+  box-shadow: var(--shadow-suave);
 }
 
 .modal::backdrop {
-  background: rgb(29 35 38 / 0.55);
+  background: rgb(15 42 49 / 0.5);
 }
 
 .modal__hoja {
@@ -91,8 +91,8 @@ function alClicFuera(e: MouseEvent) {
 .modal__burbuja {
   margin-top: 1rem;
   padding: 0.9rem 1rem;
-  background: var(--color-hueso);
-  border: 1.5px solid var(--color-tinta);
+  background: var(--color-niebla);
+  border: 1px solid var(--color-linea);
   border-radius: 14px 14px 3px 14px;
   font-size: 0.95rem;
   line-height: 1.45;

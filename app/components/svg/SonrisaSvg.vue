@@ -113,31 +113,30 @@ const LABIOS = 'M16,104 C58,64 118,44 166,52 C183,55 191,63 200,63 C209,63 217,5
 }
 
 .sonrisa__labios {
-  fill: var(--color-hueso);
+  fill: #E7C9C2;
 }
 
 .sonrisa__boca {
-  fill: var(--color-tinta);
+  fill: #3A2327;
 }
 
 .sonrisa__encia {
-  fill: var(--color-coral);
+  fill: var(--color-encia-oscura);
 }
 
 .sonrisa__pieza {
   fill: var(--tono-pieza);
-  stroke: var(--color-tinta);
-  stroke-width: 1.3;
+  stroke: #6B5357;
+  stroke-width: 1;
   stroke-linejoin: round;
   transition: fill 0.6s var(--ease-suave);
 }
 
 .sonrisa__contorno {
   fill: none;
-  stroke: var(--color-tinta);
-  stroke-width: 2;
+  stroke: #9C6F6A;
+  stroke-width: 1.4;
   stroke-linejoin: round;
-  filter: url(#trazo);
 }
 
 .sonrisa__contorno--fino {

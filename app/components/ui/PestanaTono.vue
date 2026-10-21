@@ -56,14 +56,14 @@ withDefaults(defineProps<{
   aspect-ratio: 1;
   translate: -50% 0;
   border-radius: 50%;
-  background: var(--color-marfil);
+  background: var(--color-blanco);
 }
 
 .pestana__corona {
   width: 100%;
   height: calc(var(--ancho) * 1.15);
   background: var(--hex);
-  border: 1.5px solid var(--color-tinta);
+  border: 1px solid var(--color-linea);
   border-radius: 2px 2px 46% 46% / 2px 2px 32% 32%;
   transition: background-color 0.6s var(--ease-suave), translate 0.2s var(--ease-suave);
 }

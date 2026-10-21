@@ -21,7 +21,7 @@ const volver = () => clearError({ redirect: '/' })
         </h1>
         <p class="error__sub">{{ es404 ? 'Puede que el enlace esté mal escrito o que la página se haya movido.' : 'Intenta de nuevo en un momento.' }}</p>
         <div class="error__acciones">
-          <button type="button" class="boton boton--coral" @click="volver">Ir al inicio</button>
+          <button type="button" class="boton boton--primario" @click="volver">Ir al inicio</button>
           <NuxtLink to="/cita" class="enlace">Agendar una cita</NuxtLink>
           <NuxtLink to="/tratamientos" class="enlace">Ver tratamientos</NuxtLink>
         </div>
@@ -44,7 +44,7 @@ const volver = () => clearError({ redirect: '/' })
 }
 
 .error__codigo {
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .error__titulo {

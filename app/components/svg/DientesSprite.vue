@@ -1,7 +1,6 @@
 <script setup lang="ts">
 /**
- * Sprite con las piezas base en vista oclusal (en mm, centradas, cara exterior hacia −y) y el
- * filtro de trazo irregular. Se monta una vez en el layout y se reutiliza con <use href="#pz-…">.
+ * Sprite con las piezas base en vista oclusal (en mm, centradas, cara exterior hacia −y). Se monta una vez en el layout y se reutiliza con <use href="#pz-…">.
  * Los tamaños de referencia coinciden con `BASE` en utils/arcada.ts.
  */
 </script>
@@ -9,16 +8,6 @@
 <template>
   <svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
     <defs>
-      <!-- Trazo de lápiz: desplazamiento muy bajo para que la línea no sea perfecta. -->
-      <filter id="trazo" x="-5%" y="-5%" width="110%" height="110%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="ruido" />
-        <feDisplacementMap in="SourceGraphic" in2="ruido" scale="1.1" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-      <filter id="trazo-fuerte" x="-5%" y="-5%" width="110%" height="110%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="ruido" />
-        <feDisplacementMap in="SourceGraphic" in2="ruido" scale="2.2" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-
       <g id="pz-incisivo">
         <path class="pz-contorno" d="M-4,-1.6 C-4,-3.5 4,-3.5 4,-1.6 C4,0.7 1.7,3.5 0,3.5 C-1.7,3.5 -4,0.7 -4,-1.6Z" />
         <path class="pz-surco" d="M-2.9,-1.75 Q0,-2.55 2.9,-1.75 M-1,2.1 Q0,1.3 1,2.1" />
@@ -56,24 +45,24 @@
 
 /* Las piezas toman su color de variables que se heredan desde cada <use>. */
 .pz-contorno {
-  fill: var(--pz-relleno, var(--color-marfil));
-  stroke: var(--pz-trazo, var(--color-tinta));
-  stroke-width: var(--pz-grosor, 1.4px);
+  fill: var(--pz-relleno, var(--color-blanco));
+  stroke: var(--pz-trazo, var(--color-petroleo-oscuro));
+  stroke-width: var(--pz-grosor, 1.1px);
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
 }
 
 .pz-surco {
   fill: none;
-  stroke: var(--pz-trazo, var(--color-tinta));
-  stroke-width: var(--pz-grosor-surco, 0.9px);
+  stroke: var(--pz-trazo, var(--color-petroleo-oscuro));
+  stroke-width: var(--pz-grosor-surco, 0.8px);
   stroke-linecap: round;
-  opacity: 0.55;
+  opacity: 0.4;
   vector-effect: non-scaling-stroke;
 }
 
 .pz-fosa {
-  fill: var(--pz-trazo, var(--color-tinta));
-  opacity: 0.45;
+  fill: var(--pz-trazo, var(--color-petroleo-oscuro));
+  opacity: 0.35;
 }
 </style>

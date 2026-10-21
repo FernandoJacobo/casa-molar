@@ -4,12 +4,12 @@ Sitio de demostración para una clínica dental de barrio en Zapopan. **Todos lo
 
 ## Concepto: el odontograma y la guía de tonos
 
-La identidad sale de dos objetos que hay en cualquier consultorio y que nadie usa como diseño:
+La identidad sale de dos herramientas que hay en cualquier consultorio:
 
-- **El odontograma**: las 32 piezas dibujadas en vista oclusal, con su número FDI. Es la navegación (11 Tratamientos, 21 Precios, 31 Equipo, 41 Cepillado), la ilustración del hero, el selector de piezas del plan y el mapa del cronómetro.
-- **La guía de tonos**: las 16 muestras B1…C4 se vuelven un simulador de blanqueamiento y la paleta del sitio (marfil, hueso, arena) sale de ahí.
+- **El odontograma**: las 32 piezas dibujadas en vista oclusal, con su número FDI. Es la ilustración del hero, la herramienta interactiva central, el selector de piezas del plan y el mapa del cronómetro.
+- **La guía de tonos**: las 16 muestras B1…C4 se vuelven un simulador de blanqueamiento.
 
-Todo lo demás es papelería de clínica: tarjeta de cita con perforaciones, hoja de plan imprimible, placa radiográfica, recetario. Sin fotos de stock: todo es SVG dibujado para este proyecto.
+Visualmente es una clínica limpia y profesional: blanco, petróleo y niebla, titulares en Newsreader y texto en Figtree, líneas finas y una sola sombra suave. Sin fotos de stock: todo es SVG dibujado para este proyecto. Ver [DISENO.md](DISENO.md).
 
 ## Páginas
 
@@ -26,7 +26,7 @@ Todo lo demás es papelería de clínica: tarjeta de cita con perforaciones, hoj
 
 - Nuxt 4 (prerender estático, `nitro.preset: static`) + Vue 3 + TypeScript
 - Tailwind CSS 4 (solo tokens en `@theme`; los estilos viven en cada componente)
-- @nuxt/fonts: Young Serif, Hanken Grotesk, Spline Sans Mono
+- @nuxt/fonts: Newsreader (titulares) y Figtree (texto y cifras)
 - @vueuse/nuxt, date-fns
 - Vitest (lógica pura) y Playwright (e2e contra el sitio generado)
 
@@ -79,7 +79,7 @@ El build genera `robots.txt` y `_headers` según `site.indexable`.
 
 ## Calidad
 
-- Lighthouse móvil (simulado, local): rendimiento 90–95, accesibilidad 100 en todas las páginas, buenas prácticas 100. SEO marca 66 a propósito por el `noindex` del demo.
+- Lighthouse móvil (simulado, local): rendimiento 90–94, accesibilidad 100 en todas las páginas, buenas prácticas 100. SEO marca 66 a propósito por el `noindex` del demo.
 - Responsive de 360 a 1536 px sin scroll horizontal (verificado con `npm run qa` y en e2e).
 - Auditoría visual: [AUDITORIA-DISENO.md](AUDITORIA-DISENO.md). Contrato de diseño: [DISENO.md](DISENO.md).
 

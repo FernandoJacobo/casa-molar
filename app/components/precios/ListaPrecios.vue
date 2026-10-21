@@ -43,9 +43,9 @@ const grupos = computed(() =>
 }
 
 .lista__cat {
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
   padding-bottom: 0.4rem;
-  border-bottom: 1.5px solid var(--color-tinta);
+  border-bottom: 1px solid var(--color-linea);
   margin-bottom: 0.3rem;
 }
 
@@ -66,7 +66,7 @@ const grupos = computed(() =>
 
 .renglon__nombre a:hover {
   text-decoration: underline;
-  text-decoration-color: var(--color-coral);
+  text-decoration-color: var(--color-petroleo);
 }
 
 .renglon__nombre small {
@@ -81,7 +81,7 @@ const grupos = computed(() =>
 .renglon__guia {
   flex: 1;
   min-width: 1.5rem;
-  border-bottom: 2px dotted var(--color-arena-oscura);
+  border-bottom: 2px dotted var(--color-linea-fuerte);
   translate: 0 -0.3em;
   align-self: flex-start;
   margin-top: 1em;

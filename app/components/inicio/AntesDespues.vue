@@ -34,7 +34,7 @@ const pos = ref(50)
     </div>
 
     <div class="ad__texto">
-      <p class="seccion-num"><b>§ 15</b><span>Antes / después</span></p>
+      <p class="seccion-num"><span>Antes / después</span></p>
       <h2 id="ad-titulo" class="h3 ad__titulo">Ortodoncia y blanqueamiento, en un mismo plan.</h2>
       <p>Primero se alinean, luego se aclaran. Al revés, el blanqueamiento se desperdicia entre pieza y pieza.</p>
       <p class="ad__sello etiqueta">Ilustración, no es un caso real</p>
@@ -46,8 +46,8 @@ const pos = ref(50)
 .ad {
   position: relative;
   padding-block: clamp(2rem, 5vw, 4rem);
-  border-block: 1.5px solid var(--color-tinta);
-  background: var(--color-marfil);
+  border-block: 1px solid var(--color-linea);
+  background: var(--color-blanco);
 }
 
 .ad__lienzo {
@@ -77,21 +77,13 @@ const pos = ref(50)
   pointer-events: none;
 }
 
-/* Línea de medición con ticks. */
+/* Línea divisoria del comparador. */
 .ad__regla {
   position: absolute;
-  inset: 0 auto 0 -0.5px;
-  width: 1.5px;
-  background: var(--color-tinta);
-}
-
-.ad__regla::after {
-  content: "";
-  position: absolute;
-  inset: 0 -5px;
-  background: repeating-linear-gradient(180deg, var(--color-tinta) 0 1px, transparent 1px 14px);
-  clip-path: inset(0 3px 0 3px);
-  opacity: 0.6;
+  inset: 0 auto 0 -1px;
+  width: 2px;
+  background: var(--color-blanco);
+  box-shadow: 0 0 0 1px rgb(15 42 49 / 0.15);
 }
 
 .ad__asa {
@@ -103,13 +95,13 @@ const pos = ref(50)
   place-items: center;
   width: 3.2rem;
   height: 3.2rem;
-  border: 1.5px solid var(--color-tinta);
+  border: 1px solid var(--color-linea);
   border-radius: 50%;
-  background: var(--color-coral);
-  font-family: var(--font-mono);
+  background: var(--color-petroleo);
+  color: var(--color-blanco);
   font-weight: 700;
   font-size: 0.95rem;
-  box-shadow: var(--shadow-carton-tinta);
+  box-shadow: var(--shadow-suave);
 }
 
 .ad__rango {
@@ -128,16 +120,17 @@ const pos = ref(50)
 }
 
 .ad__lienzo:has(.ad__rango:focus-visible) .ad__asa {
-  outline: 2.5px solid var(--color-coral-oscuro);
+  outline: 2.5px solid var(--color-petroleo-oscuro);
   outline-offset: 3px;
 }
 
 .ad__rotulo {
   position: absolute;
   bottom: 0.4rem;
-  padding: 0.25rem 0.5rem;
-  background: var(--color-marfil);
-  border: 1px solid var(--color-tinta);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  background: var(--color-blanco);
+  box-shadow: var(--shadow-suave);
 }
 
 .ad__rotulo--antes {
@@ -161,11 +154,10 @@ const pos = ref(50)
 
 .ad__sello {
   justify-self: start;
-  padding: 0.35rem 0.6rem;
-  border: 1.5px dashed var(--color-coral-oscuro);
-  color: var(--color-coral-oscuro);
-  font-weight: 700;
-  rotate: -2deg;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  background: var(--color-agua);
+  color: var(--color-petroleo-oscuro);
 }
 
 @media (min-width: 64rem) {
@@ -177,8 +169,8 @@ const pos = ref(50)
     margin: 0;
     max-width: 19rem;
     padding: 1.1rem 1.2rem;
-    background: var(--color-marfil);
-    border: 1.5px solid var(--color-tinta);
+    background: var(--color-blanco);
+    border: 1px solid var(--color-linea);
     z-index: 3;
   }
 

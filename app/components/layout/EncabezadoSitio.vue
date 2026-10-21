@@ -24,7 +24,6 @@ onKeyStroke('Escape', () => (abierto.value = false))
         <ul class="encabezado__lista" :class="{ 'is-abierto': abierto }" id="menu-principal">
           <li v-for="e in enlaces" :key="e.to">
             <NuxtLink :to="e.to" class="encabezado__enlace">
-              <span class="encabezado__codigo" aria-hidden="true">{{ e.codigo }}</span>
               {{ e.texto }}
             </NuxtLink>
           </li>
@@ -40,7 +39,7 @@ onKeyStroke('Escape', () => (abierto.value = false))
         </button>
       </nav>
 
-      <NuxtLink to="/cita" class="boton boton--coral encabezado__cta">Agendar</NuxtLink>
+      <NuxtLink to="/cita" class="boton boton--primario encabezado__cta">Agendar</NuxtLink>
     </div>
   </header>
 </template>
@@ -84,13 +83,13 @@ onKeyStroke('Escape', () => (abierto.value = false))
 .encabezado__codigo {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
   translate: 0 -0.35em;
 }
 
 .encabezado__enlace:hover {
   text-decoration: underline;
-  text-decoration-color: var(--color-coral);
+  text-decoration-color: var(--color-petroleo);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.3em;
 }
@@ -128,9 +127,9 @@ onKeyStroke('Escape', () => (abierto.value = false))
     min-height: 2.75rem;
     min-width: 2.75rem;
     padding: 0 0.9rem;
-    border: 1.5px solid var(--color-tinta);
+    border: 1px solid var(--color-linea);
     border-radius: var(--radius-recto);
-    background: var(--color-marfil);
+    background: var(--color-blanco);
     font-weight: 700;
   }
 
@@ -143,8 +142,8 @@ onKeyStroke('Escape', () => (abierto.value = false))
     flex-direction: column;
     gap: 0;
     padding: 0.5rem var(--margen) 1.25rem;
-    background: var(--color-marfil);
-    border-bottom: 1.5px solid var(--color-tinta);
+    background: var(--color-blanco);
+    border-bottom: 1px solid var(--color-linea);
   }
 
   .encabezado__lista.is-abierto {
@@ -152,7 +151,7 @@ onKeyStroke('Escape', () => (abierto.value = false))
   }
 
   .encabezado__lista li + li {
-    border-top: 1px dashed var(--color-arena-oscura);
+    border-top: 1px solid var(--color-linea);
   }
 
   .encabezado__enlace {

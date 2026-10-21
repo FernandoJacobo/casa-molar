@@ -27,9 +27,9 @@ defineProps<{ claro?: boolean }>()
 .logo__pieza {
   width: 2.1rem;
   height: 2.1rem;
-  --pz-relleno: var(--color-coral);
-  --pz-grosor: 1.6px;
-  rotate: -8deg;
+  --pz-relleno: var(--color-petroleo);
+  --pz-trazo: var(--color-petroleo-oscuro);
+  --pz-grosor: 1.4px;
 }
 
 .logo__texto {
@@ -40,25 +40,31 @@ defineProps<{ claro?: boolean }>()
 
 .logo__nombre {
   font-family: var(--font-serif);
-  font-size: 1.45rem;
-  letter-spacing: -0.02em;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   white-space: nowrap;
 }
 
 .logo__sufijo {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   margin-top: 0.2rem;
   color: var(--color-tinta-suave);
 }
 
 .logo--claro {
-  color: var(--color-marfil);
+  color: var(--color-blanco);
 }
 
 .logo--claro .logo__sufijo {
-  color: var(--color-hueso);
+  color: #B5C8CC;
+}
+
+.logo--claro .logo__pieza {
+  --pz-relleno: #8FC4D0;
+  --pz-trazo: #8FC4D0;
 }
 </style>

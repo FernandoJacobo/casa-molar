@@ -18,7 +18,7 @@ function elegir(i: number) {
 <template>
   <section class="faq" aria-labelledby="faq-titulo">
     <div class="contenedor">
-      <p class="seccion-num"><b>§ 22</b><span>Preguntas</span></p>
+      <p class="seccion-num"><span>Preguntas</span></p>
       <h2 id="faq-titulo" class="h2 faq__titulo">Preguntas que sí nos hacen.</h2>
 
       <div class="faq__rejilla">
@@ -70,11 +70,11 @@ function elegir(i: number) {
 }
 
 .faq__lista {
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
 }
 
 .faq__item {
-  border-bottom: 1px solid var(--color-tinta);
+  border-bottom: 1px solid var(--color-linea);
 }
 
 .faq__boton {
@@ -94,7 +94,7 @@ function elegir(i: number) {
 
 .faq__num {
   font-size: 0.75rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .faq__inline {
@@ -146,7 +146,7 @@ function elegir(i: number) {
   }
 
   .faq__item.is-activa .faq__boton {
-    color: var(--color-coral-oscuro);
+    color: var(--color-petroleo-oscuro);
   }
 }
 </style>

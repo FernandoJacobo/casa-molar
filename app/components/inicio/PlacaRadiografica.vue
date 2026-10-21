@@ -6,7 +6,7 @@ import { tecnologia } from '~/data/contenido'
   <section class="placa" aria-labelledby="placa-titulo">
     <div class="contenedor">
       <div class="placa__cabeza">
-        <p class="seccion-num placa__num"><b>§ 17</b><span>Placa · tecnología</span></p>
+        <p class="seccion-num placa__num"><span>Placa · tecnología</span></p>
         <h2 id="placa-titulo" class="h2 placa__titulo">Vemos lo que el espejo no alcanza.</h2>
         <p class="placa__entrada">Tres herramientas, explicadas sin tecnicismos. Ninguna duele.</p>
       </div>
@@ -40,14 +40,10 @@ import { tecnologia } from '~/data/contenido'
   color: var(--color-placa-texto);
 }
 
-.placa__num b {
-  color: var(--color-coral);
-}
-
 .placa__titulo {
   margin-top: 0.8rem;
   max-width: 14ch;
-  color: var(--color-marfil);
+  color: var(--color-blanco);
 }
 
 .placa__entrada {
@@ -91,14 +87,14 @@ import { tecnologia } from '~/data/contenido'
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 50%;
-  background: var(--color-coral);
+  background: var(--color-placa-linea);
   color: var(--color-placa);
   font-weight: 700;
 }
 
 .placa__nota-titulo {
   font-size: 1.35rem;
-  color: var(--color-marfil);
+  color: var(--color-blanco);
   margin-bottom: 0.3rem;
 }
 

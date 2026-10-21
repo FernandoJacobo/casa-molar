@@ -216,7 +216,7 @@ function nuevaCita() {
       <div class="cita__principal">
         <!-- Confirmación -->
         <div v-if="confirmada" id="confirmacion" class="conf" tabindex="-1" aria-live="polite">
-          <UiTarjetaCita etiqueta="Tarjeta de cita" :folio="confirmada.folio" :giro="-1.5" class="conf__tarjeta">
+          <UiTarjetaCita etiqueta="Tarjeta de cita" :folio="confirmada.folio" class="conf__tarjeta">
             <p class="conf__hola">Listo, {{ confirmada.nombre.split(' ')[0] }}.</p>
             <dl class="conf__datos">
               <div><dt class="etiqueta">Día</dt><dd>{{ fechaLarga(confirmada.fecha) }}</dd></div>
@@ -227,7 +227,7 @@ function nuevaCita() {
             <p class="conf__nota">Llega 10 minutos antes. Si no puedes venir, avísanos o reagenda aquí.</p>
           </UiTarjetaCita>
           <div class="conf__acciones">
-            <button type="button" class="boton boton--coral" @click="descargarIcs(confirmada)">Descargar para mi calendario (.ics)</button>
+            <button type="button" class="boton boton--primario" @click="descargarIcs(confirmada)">Descargar para mi calendario (.ics)</button>
             <button type="button" class="boton boton--claro" @click="enviar(mensajeCita(confirmada), 'Vista previa: tu cita por WhatsApp')">Enviar por WhatsApp</button>
             <button type="button" class="enlace conf__otra" @click="nuevaCita">Agendar otra cita</button>
           </div>
@@ -339,7 +339,7 @@ function nuevaCita() {
             <p v-if="fecha && hora" class="agenda__elegido">
               <b>{{ fechaLarga(fecha) }}, {{ horaLegible(hora) }}</b> · {{ m.texto }}
             </p>
-            <button type="submit" class="boton boton--coral">{{ reagendando ? 'Confirmar nuevo horario' : 'Confirmar cita' }}</button>
+            <button type="submit" class="boton boton--primario">{{ reagendando ? 'Confirmar nuevo horario' : 'Confirmar cita' }}</button>
           </div>
         </form>
 
@@ -393,7 +393,7 @@ function nuevaCita() {
 
 .cita__demo {
   margin-top: 1rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
   text-transform: none;
   letter-spacing: 0.02em;
 }
@@ -407,22 +407,24 @@ function nuevaCita() {
 .agenda {
   display: grid;
   gap: 0;
-  border: 1.5px solid var(--color-tinta);
-  background: #FBF6EC;
-  box-shadow: var(--shadow-carton);
+  overflow: hidden;
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radius-tarjeta);
+  background: var(--color-blanco);
+  box-shadow: var(--shadow-suave);
 }
 
 .agenda__reagenda {
   padding: 0.8rem 1.25rem;
   background: var(--color-menta);
-  border-bottom: 1.5px solid var(--color-tinta);
+  border-bottom: 1px solid var(--color-linea);
 }
 
 .paso {
   margin: 0;
   padding: 1.25rem 1.25rem 1.5rem;
   border: 0;
-  border-bottom: 1px dashed var(--color-arena-oscura);
+  border-bottom: 1px solid var(--color-linea);
   min-width: 0;
 }
 
@@ -431,7 +433,7 @@ function nuevaCita() {
 }
 
 .paso--pendiente {
-  background: rgb(226 103 77 / 0.08);
+  background: rgb(180 35 24 / 0.05);
 }
 
 .paso__titulo {
@@ -451,7 +453,7 @@ function nuevaCita() {
 
 .paso__titulo .mono {
   font-size: 0.78rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .paso__titulo small {
@@ -482,9 +484,9 @@ function nuevaCita() {
   width: 100%;
   min-height: 3rem;
   padding: 0.55rem 0.75rem;
-  border: 1.5px solid var(--color-tinta);
+  border: 1px solid var(--color-linea-fuerte);
   border-radius: var(--radius-recto);
-  background: var(--color-marfil);
+  background: var(--color-blanco);
 }
 
 textarea.campo__control {
@@ -493,12 +495,12 @@ textarea.campo__control {
 }
 
 .campo__control:focus-visible {
-  outline: 2.5px solid var(--color-coral-oscuro);
+  outline: 2.5px solid var(--color-petroleo);
   outline-offset: 1px;
 }
 
 .campo--error .campo__control {
-  border-color: var(--color-coral-oscuro);
+  border-color: var(--color-error);
   border-width: 2px;
 }
 
@@ -506,7 +508,7 @@ textarea.campo__control {
   min-height: 1.2em;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--color-coral-oscuro);
+  color: var(--color-error);
 }
 
 .profes {
@@ -524,9 +526,9 @@ textarea.campo__control {
   width: 7rem;
   min-height: 7.5rem;
   padding: 0.6rem 0.4rem;
-  border: 1.5px solid var(--color-tinta);
-  border-radius: 2px 2px 30% 30% / 2px 2px 14% 14%;
-  background: var(--color-marfil);
+  border: 1px solid var(--color-linea);
+  border-radius: 14px;
+  background: var(--color-blanco);
   text-align: center;
   cursor: pointer;
 }
@@ -553,7 +555,7 @@ textarea.campo__control {
 
 .profe:has(input:focus-visible),
 .hora:has(input:focus-visible) {
-  outline: 2.5px solid var(--color-coral-oscuro);
+  outline: 2.5px solid var(--color-petroleo-oscuro);
   outline-offset: 2px;
 }
 
@@ -577,9 +579,9 @@ textarea.campo__control {
   align-content: center;
   min-height: 3.6rem;
   padding: 0.25rem 0;
-  border: 1.5px solid var(--color-tinta);
+  border: 1px solid var(--color-linea);
   border-radius: var(--radius-recto);
-  background: var(--color-marfil);
+  background: var(--color-blanco);
   transition: translate 0.12s;
 }
 
@@ -599,7 +601,7 @@ textarea.campo__control {
   left: 0.25rem;
   font-size: 0.55rem;
   text-transform: uppercase;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .cal__libres {
@@ -609,19 +611,19 @@ textarea.campo__control {
 
 .cal__dia:disabled {
   cursor: not-allowed;
-  background: repeating-linear-gradient(135deg, transparent 0 5px, rgb(168 148 108 / 0.35) 5px 6px);
-  border-color: var(--color-arena-oscura);
+  background: repeating-linear-gradient(135deg, transparent 0 5px, rgb(115 138 144 / 0.3) 5px 6px);
+  border-color: var(--color-linea-fuerte);
   color: var(--color-tinta-suave);
 }
 
 .cal__dia.is-elegido {
-  background: var(--color-tinta);
-  color: var(--color-marfil);
+  background: var(--color-petroleo);
+  color: var(--color-blanco);
 }
 
 .cal__dia.is-elegido .cal__libres,
 .cal__dia.is-elegido .cal__mes {
-  color: var(--color-arena);
+  color: var(--color-linea);
 }
 
 .horas {
@@ -644,15 +646,17 @@ textarea.campo__control {
   align-items: center;
   min-height: 2.75rem;
   padding: 0 0.75rem;
-  border: 1.5px solid var(--color-tinta);
-  border-radius: 1px 1px 12px 12px;
-  background: var(--color-marfil);
+  border: 1px solid var(--color-linea);
+  border-radius: 8px;
+  background: var(--color-blanco);
   font-size: 0.88rem;
   cursor: pointer;
 }
 
 .hora.is-elegida {
-  background: var(--color-coral);
+  background: var(--color-petroleo);
+  border-color: var(--color-petroleo);
+  color: var(--color-blanco);
 }
 
 .datos {
@@ -736,7 +740,7 @@ textarea.campo__control {
 
 .mis__lista {
   margin-top: 1rem;
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
 }
 
 .mis__cita {
@@ -745,12 +749,12 @@ textarea.campo__control {
   gap: 0.25rem 1rem;
   align-items: center;
   padding-block: 0.75rem;
-  border-bottom: 1px solid var(--color-tinta);
+  border-bottom: 1px solid var(--color-linea);
 }
 
 .mis__folio {
   font-size: 0.78rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .mis__cuando b::first-letter {
@@ -764,7 +768,7 @@ textarea.campo__control {
 }
 
 .mis__cancelar {
-  color: var(--color-coral-oscuro);
+  color: var(--color-error);
 }
 
 .lado {
@@ -774,7 +778,7 @@ textarea.campo__control {
 }
 
 .lado__titulo {
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
   margin-bottom: 0.5rem;
 }
 
@@ -783,7 +787,7 @@ textarea.campo__control {
   justify-content: space-between;
   gap: 1rem;
   padding-block: 0.3rem;
-  border-bottom: 1px dotted var(--color-arena-oscura);
+  border-bottom: 1px dotted var(--color-linea-fuerte);
 }
 
 .lado__horario dd {
@@ -792,13 +796,14 @@ textarea.campo__control {
 }
 
 .lado__urgencias {
-  padding: 1rem 1.1rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 14px;
   background: var(--color-tinta);
-  color: var(--color-marfil);
+  color: var(--color-blanco);
 }
 
 .lado__urgencias .lado__titulo {
-  color: var(--color-coral);
+  color: var(--color-celeste);
 }
 
 .lado__tel {
@@ -807,12 +812,12 @@ textarea.campo__control {
   font-family: var(--font-serif);
   font-size: 2rem;
   text-decoration: underline;
-  text-decoration-color: var(--color-coral);
+  text-decoration-color: var(--color-celeste);
   text-underline-offset: 0.15em;
 }
 
 .lado__mapa {
-  border: 1.5px solid var(--color-tinta);
+  border: 1px solid var(--color-linea);
 }
 
 .lado__dir {

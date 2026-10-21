@@ -24,8 +24,8 @@ import { site } from '~/config/site'
   grid-template-columns: 1fr 1.2fr;
   height: var(--barra-movil);
   padding-bottom: env(safe-area-inset-bottom);
-  background: var(--color-marfil);
-  border-top: 1.5px solid var(--color-tinta);
+  background: var(--color-blanco);
+  border-top: 1px solid var(--color-linea);
 }
 
 .barra__accion {
@@ -43,8 +43,12 @@ import { site } from '~/config/site'
 }
 
 .barra__accion--cta {
-  background: var(--color-coral);
-  border-left: 1.5px solid var(--color-tinta);
+  background: var(--color-petroleo);
+  color: var(--color-blanco);
+}
+
+.barra__accion--cta .etiqueta {
+  color: var(--color-agua);
 }
 
 .barra__dato {

@@ -104,8 +104,10 @@ function alTeclear(e: KeyboardEvent, i: number) {
 
 .visita__barra {
   display: flex;
-  border: 1.5px solid var(--color-tinta);
+  overflow: hidden;
+  border: 1px solid var(--color-linea);
   border-bottom-width: 0;
+  border-radius: 16px 16px 0 0;
 }
 
 .visita__tramo {
@@ -119,8 +121,8 @@ function alTeclear(e: KeyboardEvent, i: number) {
   min-height: 8.5rem;
   padding: 0.75rem clamp(0.45rem, 2vw, 0.75rem);
   border: 0;
-  border-right: 1.5px solid var(--color-tinta);
-  background: var(--color-marfil);
+  border-right: 1px solid var(--color-linea);
+  background: var(--color-blanco);
   text-align: left;
   transition: background-color 0.2s;
 }
@@ -129,20 +131,17 @@ function alTeclear(e: KeyboardEvent, i: number) {
   border-right: 0;
 }
 
-.visita__tramo:nth-child(2) {
-  background-image: repeating-linear-gradient(135deg, transparent 0 7px, rgb(217 201 168 / 0.5) 7px 8px);
-}
-
-.visita__tramo:nth-child(3) {
-  background-color: var(--color-hueso);
-}
-
 .visita__tramo:hover {
-  background-color: var(--color-hueso);
+  background-color: var(--color-niebla);
 }
 
 .visita__tramo.is-activo {
-  background: var(--color-coral);
+  background: var(--color-petroleo);
+  color: var(--color-blanco);
+}
+
+.visita__tramo.is-activo .visita__rango {
+  color: var(--color-agua);
 }
 
 .visita__min {
@@ -165,20 +164,17 @@ function alTeclear(e: KeyboardEvent, i: number) {
   color: var(--color-tinta-suave);
 }
 
-.visita__tramo.is-activo .visita__rango {
-  color: var(--color-tinta);
-}
-
 .visita__ficha {
   display: grid;
   gap: 1.25rem;
   padding: 1.4rem 1.25rem;
-  border: 1.5px solid var(--color-tinta);
-  background: var(--color-hueso);
+  border: 1px solid var(--color-linea);
+  border-radius: 0 0 16px 16px;
+  background: var(--color-niebla);
 }
 
 .visita__sub {
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
   margin-bottom: 0.4rem;
 }
 
@@ -194,6 +190,14 @@ function alTeclear(e: KeyboardEvent, i: number) {
 
   .visita__min {
     font-size: 1.05rem;
+  }
+
+  .visita__nombre {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.2;
+    overflow-wrap: normal;
   }
 
   .visita__rango {

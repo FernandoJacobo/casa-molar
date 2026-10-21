@@ -158,7 +158,7 @@ watch([indice, terminado, corriendo], () => {
           <p v-if="terminado && !peques" class="cep__tip">Escupir sin enjuagar deja el flúor trabajando más tiempo.</p>
 
           <div class="cep__controles">
-            <button type="button" class="boton boton--coral cep__principal" @click="alternar">
+            <button type="button" class="boton boton--primario cep__principal" @click="alternar">
               {{ corriendo ? 'Pausar' : terminado ? 'Otra vez' : iniciado ? 'Seguir' : 'Empezar' }}
             </button>
             <button v-if="iniciado" type="button" class="boton boton--claro" @click="reiniciar">Reiniciar</button>
@@ -213,9 +213,9 @@ watch([indice, terminado, corriendo], () => {
   position: relative;
   width: 3.2rem;
   height: 1.7rem;
-  border: 1.5px solid var(--color-tinta);
-  border-radius: 2px;
-  background: var(--color-marfil);
+  border: 1px solid var(--color-linea-fuerte);
+  border-radius: 999px;
+  background: var(--color-niebla);
 }
 
 .cep__interruptor::after {
@@ -223,9 +223,10 @@ watch([indice, terminado, corriendo], () => {
   position: absolute;
   top: 2px;
   left: 2px;
-  width: 1.2rem;
+  width: calc(1.7rem - 6px);
   height: calc(100% - 4px);
-  background: var(--color-tinta);
+  border-radius: 50%;
+  background: var(--color-tinta-suave);
   transition: translate 0.18s;
 }
 
@@ -234,12 +235,12 @@ watch([indice, terminado, corriendo], () => {
 }
 
 .cep__modo input:checked + .cep__interruptor::after {
-  translate: 1.55rem 0;
-  background: var(--color-coral-oscuro);
+  translate: 1.5rem 0;
+  background: var(--color-petroleo);
 }
 
 .cep__modo input:focus-visible + .cep__interruptor {
-  outline: 2.5px solid var(--color-coral-oscuro);
+  outline: 2.5px solid var(--color-petroleo-oscuro);
   outline-offset: 2px;
 }
 
@@ -269,11 +270,11 @@ watch([indice, terminado, corriendo], () => {
 }
 
 .cep__arco-fondo {
-  stroke: var(--color-arena);
+  stroke: var(--color-linea);
 }
 
 .cep__arco {
-  stroke: var(--color-coral-oscuro);
+  stroke: var(--color-petroleo-oscuro);
 }
 
 .cep__arcada {
@@ -327,7 +328,7 @@ watch([indice, terminado, corriendo], () => {
   display: block;
   margin-bottom: 0.3rem;
   font-family: var(--font-mono);
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .cep__tip {
@@ -355,12 +356,12 @@ watch([indice, terminado, corriendo], () => {
 }
 
 .cep__notas {
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
   padding-top: 1.25rem;
 }
 
 .cep__notas h2 {
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .cep__notas ol {
@@ -386,21 +387,21 @@ watch([indice, terminado, corriendo], () => {
 /* Modo peques: más grande, más color, menos texto. */
 .cep--peques {
   background: var(--color-menta);
-  border-bottom: 1.5px solid var(--color-tinta);
+  border-bottom: 1px solid var(--color-linea);
 }
 
 .cep--peques .cep__arco {
-  stroke: var(--color-coral);
+  stroke: var(--color-petroleo);
   stroke-width: 5;
 }
 
 .cep--peques .cep__arco-fondo {
-  stroke: var(--color-marfil);
+  stroke: var(--color-blanco);
   stroke-width: 5;
 }
 
 .cep--peques :deep(.arcada__pieza.is-activa) {
-  --pz-relleno: var(--color-coral);
+  --pz-relleno: var(--color-petroleo);
 }
 
 .cep--peques .cep__tiempo {

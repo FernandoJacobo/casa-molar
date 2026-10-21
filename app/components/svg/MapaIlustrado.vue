@@ -8,7 +8,7 @@ const m = site.mapa
 
 <template>
   <svg class="mapa" viewBox="0 0 420 280" role="img" :aria-label="`Mapa ilustrado (ficticio): ${site.nombre} está en ${m.avenida} casi esquina con ${m.calle1}, enfrente del ${m.parque}.`">
-    <g class="mapa__trazo" filter="url(#trazo)">
+    <g class="mapa__trazo">
       <!-- Manzanas -->
       <path class="mapa__manzana" d="M14,14 H128 V96 H14 Z M156,14 H262 V96 H156 Z M290,14 H406 V96 H290 Z" />
       <path class="mapa__manzana" d="M14,182 H128 V266 H14 Z M290,182 H406 V266 H290 Z" />
@@ -68,7 +68,7 @@ const m = site.mapa
   display: block;
   width: 100%;
   height: auto;
-  background: var(--color-hueso);
+  background: var(--color-niebla);
 }
 
 .mapa__trazo path,
@@ -79,7 +79,7 @@ const m = site.mapa
 }
 
 .mapa__manzana {
-  fill: var(--color-marfil);
+  fill: var(--color-blanco);
 }
 
 .mapa__parque {
@@ -96,7 +96,7 @@ const m = site.mapa
 }
 
 .mapa__clinica {
-  fill: var(--color-coral);
+  fill: var(--color-petroleo);
 }
 
 .mapa__calles path {
@@ -133,7 +133,7 @@ const m = site.mapa
 }
 
 .mapa__parada rect {
-  fill: var(--color-marfil);
+  fill: var(--color-blanco);
   stroke: var(--color-tinta);
   stroke-width: 1.2;
 }
@@ -147,7 +147,7 @@ const m = site.mapa
 }
 
 .mapa__aqui {
-  --pz-relleno: var(--color-marfil);
+  --pz-relleno: var(--color-blanco);
 }
 
 .mapa__aqui-halo {

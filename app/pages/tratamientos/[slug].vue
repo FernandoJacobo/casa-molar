@@ -32,8 +32,7 @@ useJsonLd(() => ({
       <NuxtLink to="/tratamientos" class="etiqueta det__volver">← Tratamientos</NuxtLink>
       <div class="det__rejilla">
         <div class="det__texto">
-          <p class="det__codigo mono" aria-hidden="true">{{ tr.codigo }}</p>
-          <p class="seccion-num"><b>{{ tr.codigo }}</b><span>{{ tr.categoria }}</span></p>
+          <p class="seccion-num"><span>{{ tr.categoria }}</span></p>
           <h1 class="det__titulo">{{ tr.nombre }}</h1>
           <p class="entrada det__linea">{{ tr.linea }}</p>
           <dl class="det__datos">
@@ -42,7 +41,7 @@ useJsonLd(() => ({
             <div><dt class="etiqueta">Primera cita</dt><dd class="det__dato-chico">{{ duracionLegible(tr.minutosCita) }}</dd></div>
           </dl>
           <div class="det__acciones">
-            <NuxtLink :to="{ path: '/cita', query: { motivo: tr.slug } }" class="boton boton--coral">Agendar {{ tr.nombre.toLowerCase() }}</NuxtLink>
+            <NuxtLink :to="{ path: '/cita', query: { motivo: tr.slug } }" class="boton boton--primario">Agendar {{ tr.nombre.toLowerCase() }}</NuxtLink>
             <NuxtLink :to="{ path: '/precios', query: { agregar: tr.slug }, hash: '#plan' }" class="enlace">Agregar a mi plan</NuxtLink>
           </div>
         </div>
@@ -116,10 +115,10 @@ useJsonLd(() => ({
       </section>
 
       <aside class="det__cierre det__bloque--ancho">
-        <UiTarjetaCita etiqueta="Tarjeta de cita" :folio="tr.codigo" :giro="-1">
+        <UiTarjetaCita etiqueta="Tarjeta de cita" :folio="tr.codigo">
           <p class="det__cierre-titulo">{{ tr.nombre }}, desde {{ pesos(tr.desde) }}.</p>
           <p class="det__cierre-texto">El precio final se confirma en la valoración, por escrito y antes de empezar.</p>
-          <NuxtLink :to="{ path: '/cita', query: { motivo: tr.slug } }" class="boton boton--coral">Agendar</NuxtLink>
+          <NuxtLink :to="{ path: '/cita', query: { motivo: tr.slug } }" class="boton boton--primario">Agendar</NuxtLink>
         </UiTarjetaCita>
         <p class="det__aviso">Contenido orientativo; no sustituye una valoración presencial. Precios ilustrativos.</p>
       </aside>
@@ -159,17 +158,6 @@ useJsonLd(() => ({
   position: relative;
 }
 
-.det__codigo {
-  position: absolute;
-  top: -0.3em;
-  right: 0;
-  font-size: clamp(5rem, 16vw, 12rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.06em;
-  color: var(--color-hueso);
-  z-index: -1;
-}
 
 .det__titulo {
   margin-top: 0.8rem;
@@ -189,7 +177,7 @@ useJsonLd(() => ({
   gap: 1rem 2rem;
   margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
 }
 
 .det__datos dd {
@@ -223,16 +211,16 @@ useJsonLd(() => ({
   justify-self: center;
   width: 100%;
   padding: 1.5rem;
-  background: var(--color-hueso);
-  border: 1.5px solid var(--color-tinta);
-  border-radius: 50% 50% 4px 4px / 34% 34% 4px 4px;
+  background: var(--color-niebla);
+  border: 1px solid var(--color-linea);
+  border-radius: 24px;
 }
 
 .det__cuerpo {
   display: grid;
   gap: 3rem;
   padding-top: clamp(2rem, 5vw, 3.5rem);
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
 }
 
 .det__bloque {
@@ -258,14 +246,14 @@ useJsonLd(() => ({
   left: 0;
   top: 0.62em;
   width: 0.65rem;
-  border-top: 1.5px solid var(--color-coral);
+  border-top: 1.5px solid var(--color-petroleo);
 }
 
 .etapas {
   display: grid;
   gap: 0;
   counter-reset: etapa;
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
 }
 
 .etapa {
@@ -273,14 +261,14 @@ useJsonLd(() => ({
   grid-template-columns: 2.75rem 1fr;
   column-gap: 1rem;
   padding: 1rem 0;
-  border-bottom: 1px dashed var(--color-arena-oscura);
+  border-bottom: 1px solid var(--color-linea);
 }
 
 .etapa__n {
   grid-row: span 2;
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .etapa__titulo {
@@ -293,8 +281,8 @@ useJsonLd(() => ({
 
 .det__sim {
   padding: clamp(1rem, 3vw, 2rem);
-  background: var(--color-hueso);
-  border: 1.5px solid var(--color-tinta);
+  background: var(--color-niebla);
+  border: 1px solid var(--color-linea);
 }
 
 .det__quienes {
@@ -314,11 +302,11 @@ useJsonLd(() => ({
 }
 
 .det__faq {
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
 }
 
 .det__pregunta {
-  border-bottom: 1px solid var(--color-tinta);
+  border-bottom: 1px solid var(--color-linea);
 }
 
 .det__pregunta summary {
@@ -341,7 +329,7 @@ useJsonLd(() => ({
 .det__pregunta summary::after {
   content: "+";
   font-family: var(--font-mono);
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .det__pregunta[open] summary::after {
@@ -387,7 +375,7 @@ useJsonLd(() => ({
   gap: 1rem;
   margin-top: 3rem;
   padding-top: 1.5rem;
-  border-top: 1px dashed var(--color-arena-oscura);
+  border-top: 1px solid var(--color-linea);
 }
 
 .det__nav-enlace {
@@ -405,7 +393,7 @@ useJsonLd(() => ({
 
 .det__nav-enlace:hover {
   text-decoration: underline;
-  text-decoration-color: var(--color-coral);
+  text-decoration-color: var(--color-petroleo);
 }
 
 @media (min-width: 64rem) {
@@ -434,7 +422,7 @@ useJsonLd(() => ({
     align-content: start;
     padding: 1rem 1.25rem 1.25rem 0;
     border-bottom: 0;
-    border-top: 1.5px solid var(--color-tinta);
+    border-top: 1px solid var(--color-linea);
     margin-right: 1rem;
   }
 

@@ -14,33 +14,11 @@
 <style scoped>
 .tonos {
   padding-block: clamp(4rem, 9vw, 8rem);
-  background: var(--color-hueso);
-  border-block: 1.5px solid var(--color-tinta);
+  background: var(--color-niebla);
 }
 
 .tonos__cuerpo {
-  margin-top: clamp(2rem, 5vw, 3.5rem);
-  padding-inline: var(--margen);
-}
-
-@media (min-width: 64rem) {
-  .tonos__cuerpo {
-    /* La franja se pega al borde izquierdo de la pantalla. */
-    padding-left: 0;
-    padding-right: var(--margen);
-  }
-
-  .tonos__cuerpo :deep(.sim__franja-caja) {
-    padding-left: 0;
-  }
-
-  .tonos__cuerpo :deep(.sim__modo) {
-    margin-left: var(--margen);
-  }
-
-  .tonos__cuerpo :deep(.sim__muestra) {
-    border-left-width: calc(var(--margen) + 0.4rem);
-    border-radius: 0 14px 14px 0;
-  }
+  width: min(100% - 2 * var(--margen), var(--ancho));
+  margin: clamp(2rem, 5vw, 3.5rem) auto 0;
 }
 </style>

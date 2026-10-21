@@ -39,7 +39,7 @@ const relacionados = computed(() => (pieza.value?.tratamientos ?? []).map(s => t
 
       <p class="panel__dato"><span class="etiqueta">Dato</span> {{ pieza.dato }}</p>
 
-      <NuxtLink :to="{ path: '/cita', query: { pieza: pieza.fdi } }" class="boton boton--coral panel__cta">
+      <NuxtLink :to="{ path: '/cita', query: { pieza: pieza.fdi } }" class="boton boton--primario panel__cta">
         Revisar esta pieza
       </NuxtLink>
       <p class="panel__aviso">Información orientativa. Lo que pasa en tu boca solo se sabe en una valoración.</p>
@@ -65,14 +65,14 @@ const relacionados = computed(() => (pieza.value?.tratamientos ?? []).map(s => t
   align-items: end;
   gap: 0.9rem;
   padding-bottom: 0.9rem;
-  border-bottom: 1.5px solid var(--color-tinta);
+  border-bottom: 1px solid var(--color-linea);
 }
 
 .panel__fdi {
   font-family: var(--font-serif);
   font-size: clamp(4.5rem, 9vw, 7rem);
   line-height: 0.78;
-  color: var(--color-coral-titular);
+  color: var(--color-petroleo);
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.04em;
 }
@@ -106,7 +106,7 @@ const relacionados = computed(() => (pieza.value?.tratamientos ?? []).map(s => t
 
 .panel__sub {
   margin: 1.2rem 0 0.45rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .panel__lista li {
@@ -121,7 +121,7 @@ const relacionados = computed(() => (pieza.value?.tratamientos ?? []).map(s => t
   left: 0;
   top: 0.62em;
   width: 0.5rem;
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
 }
 
 .panel__trat {
@@ -136,12 +136,12 @@ const relacionados = computed(() => (pieza.value?.tratamientos ?? []).map(s => t
   gap: 0.4rem;
   min-height: 2.75rem;
   padding: 0.3rem 0.7rem;
-  border: 1.5px solid var(--color-tinta);
-  border-radius: 1px 1px 12px 12px;
+  border: 1px solid var(--color-linea);
+  border-radius: 8px;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
-  background: var(--color-marfil);
+  background: var(--color-blanco);
 }
 
 .panel__enlace:hover {
@@ -150,19 +150,19 @@ const relacionados = computed(() => (pieza.value?.tratamientos ?? []).map(s => t
 
 .panel__enlace .mono {
   font-size: 0.72rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .panel__dato {
   margin-top: 1.2rem;
   padding: 0.8rem 0.9rem;
-  background: var(--color-hueso);
+  background: var(--color-niebla);
   font-size: 0.95rem;
 }
 
 .panel__dato .etiqueta {
   margin-right: 0.4rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .panel__cta {

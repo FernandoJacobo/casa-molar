@@ -71,12 +71,12 @@ const d = site.direccion
   max-width: 44rem;
   margin-top: 2rem;
   padding: 1.1rem 1.25rem;
-  border-left: 4px solid var(--color-coral-oscuro);
-  background: var(--color-hueso);
+  border-left: 4px solid var(--color-petroleo-oscuro);
+  background: var(--color-niebla);
 }
 
 .aviso__demo .etiqueta {
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
   margin-bottom: 0.4rem;
 }
 
@@ -96,7 +96,7 @@ const d = site.direccion
 
 .aviso__cuerpo h2 .mono {
   font-size: 0.75rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .aviso__cuerpo p + p {

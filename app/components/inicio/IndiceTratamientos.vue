@@ -61,7 +61,6 @@ function alternar(slug: string) {
 
         <aside class="indice__lamina" aria-hidden="true">
           <div class="indice__pegajosa">
-            <p class="indice__codigo-grande mono">{{ t.codigo }}</p>
             <div class="indice__ilus">
               <SvgIlustracionTratamiento :key="t.slug" :slug="t.slug" />
             </div>
@@ -86,11 +85,11 @@ function alternar(slug: string) {
 }
 
 .indice__lista {
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
 }
 
 .fila {
-  border-bottom: 1px solid var(--color-tinta);
+  border-bottom: 1px solid var(--color-linea);
 }
 
 .fila__linea {
@@ -104,12 +103,13 @@ function alternar(slug: string) {
 
 .fila__codigo {
   font-size: 0.78rem;
-  color: var(--color-coral-oscuro);
+  font-weight: 600;
+  color: var(--color-tinta-suave);
 }
 
 .fila__nombre {
-  font-size: clamp(1.35rem, 2.6vw, 2.1rem);
-  line-height: 1.05;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.1;
   hyphens: auto;
   overflow-wrap: break-word;
 }
@@ -120,7 +120,7 @@ function alternar(slug: string) {
 
 .fila__nombre a:hover {
   text-decoration: underline;
-  text-decoration-color: var(--color-coral);
+  text-decoration-color: var(--color-petroleo);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.15em;
 }
@@ -146,9 +146,9 @@ function alternar(slug: string) {
 .fila__abrir {
   width: 2.75rem;
   height: 2.75rem;
-  border: 1.5px solid var(--color-tinta);
+  border: 1px solid var(--color-linea);
   border-radius: 50%;
-  background: var(--color-marfil);
+  background: var(--color-blanco);
   font-size: 1.3rem;
   line-height: 1;
 }
@@ -166,7 +166,8 @@ function alternar(slug: string) {
 }
 
 .fila__ilus {
-  background: var(--color-hueso);
+  background: var(--color-niebla);
+  border-radius: 12px;
 }
 
 .fila__dur {
@@ -209,7 +210,7 @@ function alternar(slug: string) {
   }
 
   .fila.is-activa .fila__linea {
-    background: var(--color-hueso);
+    background: var(--color-niebla);
     padding-left: 0.75rem;
   }
 
@@ -222,20 +223,10 @@ function alternar(slug: string) {
     top: 2rem;
   }
 
-  .indice__codigo-grande {
-    font-size: clamp(4rem, 8vw, 7.5rem);
-    font-weight: 700;
-    line-height: 0.9;
-    letter-spacing: -0.05em;
-    color: var(--color-coral);
-  }
-
   .indice__ilus {
-    margin-top: -1.5rem;
-    background: var(--color-hueso);
-    border: 1.5px solid var(--color-tinta);
-    border-radius: 50% 50% 4px 4px / 32% 32% 4px 4px;
-    padding: 1rem;
+    background: var(--color-niebla);
+    border-radius: 24px;
+    padding: 1.5rem;
   }
 
   .indice__pie {

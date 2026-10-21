@@ -28,7 +28,6 @@
 }
 
 .sillon__trazo {
-  filter: url(#trazo);
 }
 
 .sillon__trazo path {
@@ -40,11 +39,11 @@
 }
 
 .sillon__trazo .sillon__tapiz {
-  fill: var(--color-coral);
+  fill: var(--color-petroleo);
 }
 
 .sillon__trazo .sillon__lampara {
-  fill: var(--color-hueso);
+  fill: var(--color-niebla);
 }
 
 .sillon__luz {

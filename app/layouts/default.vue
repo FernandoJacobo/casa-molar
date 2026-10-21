@@ -21,7 +21,7 @@
   z-index: 100;
   padding: 0.75rem 1rem;
   background: var(--color-tinta);
-  color: var(--color-marfil);
+  color: var(--color-blanco);
   font-weight: 700;
   text-decoration: none;
 }

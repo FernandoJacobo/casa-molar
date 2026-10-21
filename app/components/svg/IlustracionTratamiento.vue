@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /**
  * Ilustración de cada tratamiento: piezas frontales (con raíz) + el objeto del tratamiento.
- * Línea en tinta, coral como único acento.
+ * Línea en petróleo, encía en rosa y un solo acento.
  */
 import { dienteFrontal } from '~/utils/dientesFrontales'
 
@@ -152,19 +152,18 @@ const s = computed(() => props.slug)
 }
 
 .ilus__trazo {
-  filter: url(#trazo);
 }
 
 .ilus__trazo path,
 .ilus__trazo rect {
-  stroke: var(--color-tinta);
-  stroke-width: 1.8;
+  stroke: var(--color-petroleo-oscuro);
+  stroke-width: 1.6;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
 
 .ilus__pieza {
-  fill: var(--color-marfil);
+  fill: var(--color-blanco);
 }
 
 .ilus__pieza--oscura {
@@ -176,13 +175,12 @@ const s = computed(() => props.slug)
 }
 
 .ilus__encia {
-  fill: var(--color-coral);
+  fill: var(--color-encia);
   stroke: none !important;
-  opacity: 0.85;
 }
 
 .ilus__hueso {
-  fill: var(--color-hueso);
+  fill: var(--color-niebla);
   stroke-dasharray: 2 5;
 }
 
@@ -194,7 +192,7 @@ const s = computed(() => props.slug)
 
 .ilus__sarro {
   fill: none;
-  stroke: var(--color-arena-oscura) !important;
+  stroke: var(--color-linea-fuerte) !important;
   stroke-width: 4 !important;
 }
 
@@ -208,16 +206,16 @@ const s = computed(() => props.slug)
 }
 
 .ilus__rocio circle {
-  fill: var(--color-tinta);
+  fill: var(--color-petroleo);
 }
 
 .ilus__resina {
-  fill: var(--color-coral);
+  fill: var(--color-petroleo);
 }
 
 .ilus__luz {
   fill: none;
-  stroke: var(--color-coral) !important;
+  stroke: var(--color-petroleo) !important;
   stroke-width: 2 !important;
 }
 
@@ -226,7 +224,7 @@ const s = computed(() => props.slug)
 }
 
 .ilus__soporte {
-  fill: var(--color-tinta);
+  fill: var(--color-petroleo-oscuro);
 }
 
 .ilus__muestra {
@@ -253,27 +251,27 @@ const s = computed(() => props.slug)
 }
 
 .ilus__bracket rect {
-  fill: var(--color-hueso);
+  fill: var(--color-niebla);
 }
 
 .ilus__arco {
   fill: none;
-  stroke: var(--color-coral) !important;
+  stroke: var(--color-petroleo) !important;
   stroke-width: 2.6 !important;
 }
 
 .ilus__tornillo {
-  fill: var(--color-hueso);
+  fill: var(--color-niebla);
 }
 
 .ilus__lamina {
   fill: rgb(242 235 221 / 0.75);
-  stroke: var(--color-coral) !important;
+  stroke: var(--color-petroleo) !important;
 }
 
 .ilus__conducto {
   fill: none;
-  stroke: var(--color-coral) !important;
+  stroke: var(--color-petroleo) !important;
   stroke-width: 3 !important;
 }
 
@@ -282,6 +280,6 @@ const s = computed(() => props.slug)
 }
 
 .ilus__cabeza {
-  fill: var(--color-marfil);
+  fill: var(--color-blanco);
 }
 </style>

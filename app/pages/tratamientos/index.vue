@@ -52,14 +52,14 @@ const categorias = computed(() => {
 }
 
 .trat__aviso {
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .trat__grupo {
   display: grid;
   gap: 0.75rem;
   padding-block: 1.5rem;
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
 }
 
 .trat__cat {
@@ -82,7 +82,7 @@ const categorias = computed(() => {
   row-gap: 0.15rem;
   padding: 1rem 0;
   text-decoration: none;
-  border-bottom: 1px dashed var(--color-arena-oscura);
+  border-bottom: 1px solid var(--color-linea);
 }
 
 .trat__lista li:last-child .ficha {
@@ -92,16 +92,16 @@ const categorias = computed(() => {
 .ficha__ilus {
   grid-area: ilus;
   align-self: start;
-  background: var(--color-hueso);
-  border-radius: 50% 50% 3px 3px / 30% 30% 3px 3px;
-  border: 1.5px solid var(--color-tinta);
+  background: var(--color-niebla);
+  border-radius: 14px;
+  border: 1px solid var(--color-linea);
   transition: background-color 0.2s;
 }
 
 .ficha__codigo {
   grid-area: codigo;
   font-size: 0.75rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .ficha__nombre {
@@ -131,7 +131,7 @@ const categorias = computed(() => {
 
 .ficha:hover .ficha__nombre {
   text-decoration: underline;
-  text-decoration-color: var(--color-coral);
+  text-decoration-color: var(--color-petroleo);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.12em;
 }

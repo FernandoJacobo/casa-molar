@@ -41,8 +41,8 @@ const visibles = computed(() => hitos.value.filter(h => h.mes % 3 === 0 || h.mes
 <style scoped>
 .linea {
   padding: 1.5rem 1.25rem 1.25rem;
-  border: 1.5px solid var(--color-tinta);
-  background: var(--color-marfil);
+  border: 1px solid var(--color-linea);
+  background: var(--color-blanco);
 }
 
 .linea__pista {
@@ -65,7 +65,7 @@ const visibles = computed(() => hitos.value.filter(h => h.mes % 3 === 0 || h.mes
 }
 
 .linea__piezas rect {
-  fill: var(--color-marfil);
+  fill: var(--color-blanco);
   stroke: var(--color-tinta);
   stroke-width: 1.4;
 }
@@ -86,7 +86,7 @@ const visibles = computed(() => hitos.value.filter(h => h.mes % 3 === 0 || h.mes
   right: 0;
   bottom: 0.4rem;
   height: 10px;
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
 }
 
 .linea__ticks span {
@@ -94,7 +94,7 @@ const visibles = computed(() => hitos.value.filter(h => h.mes % 3 === 0 || h.mes
   top: 0;
   width: 1.5px;
   height: 8px;
-  background: var(--color-coral);
+  background: var(--color-petroleo);
   translate: -50% 0;
 }
 

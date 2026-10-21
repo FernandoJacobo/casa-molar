@@ -18,10 +18,9 @@ const query = computed(() => ({ motivo: motivo.value, ...(fecha.value ? { fecha:
 
 <template>
   <section class="cta" aria-labelledby="cta-titulo">
-    <SvgArcadaSvg class="cta__marca" modo="ambas" :encia="false" />
     <div class="contenedor cta__caja">
-      <p class="seccion-num"><b>§ 23</b><span>Agenda</span></p>
-      <UiTarjetaCita etiqueta="Tarjeta de cita" folio="nueva" :giro="-1.5" class="cta__tarjeta">
+      <p class="seccion-num"><span>Agenda</span></p>
+      <UiTarjetaCita etiqueta="Tarjeta de cita" folio="nueva" class="cta__tarjeta">
         <h2 id="cta-titulo" class="cta__titulo">¿Cuándo te vemos?</h2>
         <form class="cta__form" @submit.prevent="navigateTo({ path: '/cita', query })">
           <label class="cta__campo">
@@ -45,7 +44,7 @@ const query = computed(() => ({ motivo: motivo.value, ...(fecha.value ? { fecha:
               <span v-else class="cta__cargando etiqueta">Calculando días…</span>
             </div>
           </fieldset>
-          <button type="submit" class="boton boton--coral cta__boton">Ver horarios disponibles</button>
+          <button type="submit" class="boton boton--primario cta__boton">Ver horarios disponibles</button>
         </form>
         <p class="cta__nota">Te pedimos tus datos en el siguiente paso. Nada se envía hasta que confirmes.</p>
       </UiTarjetaCita>
@@ -58,16 +57,6 @@ const query = computed(() => ({ motivo: motivo.value, ...(fecha.value ? { fecha:
   position: relative;
   padding-block: clamp(4rem, 9vw, 7rem) 2rem;
   overflow: hidden;
-}
-
-.cta__marca {
-  position: absolute;
-  width: min(46rem, 130vw);
-  left: 50%;
-  top: 50%;
-  translate: -50% -50%;
-  opacity: 0.13;
-  pointer-events: none;
 }
 
 .cta__caja {
@@ -108,9 +97,9 @@ const query = computed(() => ({ motivo: motivo.value, ...(fecha.value ? { fecha:
 .cta__select {
   min-height: 3rem;
   padding: 0 0.75rem;
-  border: 1.5px solid var(--color-tinta);
+  border: 1px solid var(--color-linea-fuerte);
   border-radius: var(--radius-recto);
-  background: var(--color-marfil);
+  background: var(--color-blanco);
 }
 
 .cta__dias {
@@ -126,9 +115,9 @@ const query = computed(() => ({ motivo: motivo.value, ...(fecha.value ? { fecha:
   align-content: center;
   width: 3.4rem;
   min-height: 4rem;
-  border: 1.5px solid var(--color-tinta);
-  border-radius: 2px 2px 40% 40% / 2px 2px 22% 22%;
-  background: var(--color-marfil);
+  border: 1px solid var(--color-linea);
+  border-radius: 10px;
+  background: var(--color-blanco);
   cursor: pointer;
   transition: translate 0.15s;
 }
@@ -138,12 +127,12 @@ const query = computed(() => ({ motivo: motivo.value, ...(fecha.value ? { fecha:
 }
 
 .cta__dia.is-elegido {
-  background: var(--color-tinta);
-  color: var(--color-marfil);
+  background: var(--color-petroleo);
+  color: var(--color-blanco);
 }
 
 .cta__dia:has(input:focus-visible) {
-  outline: 2.5px solid var(--color-coral-oscuro);
+  outline: 2.5px solid var(--color-petroleo-oscuro);
   outline-offset: 2px;
 }
 

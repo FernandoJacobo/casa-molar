@@ -72,7 +72,7 @@ watch(activa, (fdi) => {
     position: sticky;
     top: 1.5rem;
     padding: 1.5rem 0 1.5rem clamp(1.5rem, 3vw, 3rem);
-    border-left: 1.5px solid var(--color-tinta);
+    border-left: 1px solid var(--color-linea);
     min-height: 26rem;
   }
 }

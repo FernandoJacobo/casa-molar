@@ -193,8 +193,8 @@ defineExpose({ enfocar })
 .odonto__pestana {
   flex: 1;
   min-height: 2.75rem;
-  border: 1.5px solid var(--color-tinta);
-  background: var(--color-marfil);
+  border: 1px solid var(--color-linea);
+  background: var(--color-blanco);
   font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.06em;
@@ -206,8 +206,8 @@ defineExpose({ enfocar })
 }
 
 .odonto__pestana[aria-pressed="true"] {
-  background: var(--color-tinta);
-  color: var(--color-marfil);
+  background: var(--color-petroleo);
+  color: var(--color-blanco);
 }
 
 .odonto__svg {
@@ -219,13 +219,13 @@ defineExpose({ enfocar })
 
 .odonto__encia {
   fill: none;
-  stroke: var(--color-coral);
+  stroke: var(--color-petroleo);
   stroke-opacity: 0.14;
   stroke-width: 13;
 }
 
 .odonto__eje {
-  stroke: var(--color-arena-oscura);
+  stroke: var(--color-linea-fuerte);
   stroke-width: 0.3;
   stroke-dasharray: 1.2 1.6;
 }
@@ -245,7 +245,7 @@ defineExpose({ enfocar })
   cursor: pointer;
   outline: none;
   -webkit-tap-highlight-color: transparent;
-  --pz-relleno: var(--color-marfil);
+  --pz-relleno: var(--color-blanco);
 }
 
 .odonto__area {
@@ -257,7 +257,7 @@ defineExpose({ enfocar })
 }
 
 .odonto__pieza:hover {
-  --pz-relleno: var(--color-hueso);
+  --pz-relleno: var(--color-niebla);
 }
 
 .odonto__pieza:hover .odonto__eleva,
@@ -272,7 +272,7 @@ defineExpose({ enfocar })
 }
 
 .odonto__pieza:focus-visible {
-  --pz-trazo: var(--color-coral-oscuro);
+  --pz-trazo: var(--color-petroleo-oscuro);
   --pz-grosor: 2.4px;
 }
 
@@ -301,7 +301,7 @@ defineExpose({ enfocar })
 
 .odonto__pieza.is-marcada .odonto__num,
 .odonto__pieza:focus-visible .odonto__num {
-  fill: var(--color-coral-oscuro);
+  fill: var(--color-petroleo-oscuro);
   font-weight: 700;
 }
 
@@ -322,7 +322,7 @@ defineExpose({ enfocar })
   white-space: normal;
   margin-top: 1rem;
   padding: 1rem;
-  border: 1.5px dashed var(--color-tinta);
+  border: 1px dashed var(--color-linea-fuerte);
   display: grid;
   gap: 1rem;
 }
@@ -343,7 +343,7 @@ defineExpose({ enfocar })
   min-height: 2.75rem;
   padding: 0.25rem 0.6rem;
   border: 1px solid var(--color-tinta);
-  background: var(--color-marfil);
+  background: var(--color-blanco);
   font-size: 0.85rem;
 }
 

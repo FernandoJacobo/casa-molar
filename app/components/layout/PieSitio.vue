@@ -9,12 +9,12 @@ const anio = new Date().getFullYear()
   <footer class="pie">
     <div class="contenedor pie__rejilla">
       <div class="pie__intro">
-        <SvgSonrisaSvg variante="linea" class="pie__sonrisa" />
+        <LayoutLogoCasa claro />
         <p class="pie__lema">{{ site.lema }}</p>
         <p class="pie__voz">Te explicamos lo que vemos antes de hacer nada.</p>
         <div class="pie__acciones">
-          <NuxtLink to="/cita" class="boton boton--coral">Agendar valoración</NuxtLink>
-          <a :href="`tel:${site.telefono.enlace}`" class="enlace">{{ site.telefono.visible }}</a>
+          <NuxtLink to="/cita" class="boton boton--primario">Agendar valoración</NuxtLink>
+          <a :href="`tel:${site.telefono.enlace}`" class="pie__tel">{{ site.telefono.visible }}</a>
         </div>
       </div>
 
@@ -31,7 +31,7 @@ const anio = new Date().getFullYear()
         <address class="pie__direccion">
           {{ d.calle }}, {{ d.colonia }}<br>
           {{ d.ciudad }}, {{ d.estado }}<br>
-          <a :href="`mailto:${site.correo}`" class="enlace">{{ site.correo }}</a>
+          <a :href="`mailto:${site.correo}`">{{ site.correo }}</a>
         </address>
 
         <h2 class="etiqueta pie__titulo">Sitio</h2>
@@ -62,8 +62,6 @@ const anio = new Date().getFullYear()
         <a :href="site.credito.url" target="_blank" rel="noopener">{{ site.credito.visible }}</a>
       </p>
     </div>
-
-    <p class="pie__gigante" aria-hidden="true">{{ site.nombre }}</p>
   </footer>
 </template>
 
@@ -71,33 +69,31 @@ const anio = new Date().getFullYear()
 .pie {
   position: relative;
   margin-top: clamp(4rem, 10vw, 8rem);
-  background: var(--color-hueso);
-  border-top: 1.5px solid var(--color-tinta);
-  overflow: hidden;
+  background: var(--color-tinta);
+  color: #D5E2E4;
+}
+
+.pie a:not(.boton) {
+  color: var(--color-blanco);
 }
 
 .pie__rejilla {
   display: grid;
   gap: 2.5rem;
-  padding-block: clamp(2.5rem, 6vw, 4.5rem) 2.5rem;
-}
-
-.pie__sonrisa {
-  width: min(15rem, 70%);
-  color: var(--color-tinta);
-  margin-bottom: 1rem;
+  padding-block: clamp(3rem, 7vw, 5rem) 2.5rem;
 }
 
 .pie__lema {
+  margin-top: 1.5rem;
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.1;
+  color: var(--color-blanco);
 }
 
 .pie__voz {
-  margin-top: 0.6rem;
-  color: var(--color-tinta-suave);
-  max-width: 28ch;
+  margin-top: 0.5rem;
+  max-width: 30ch;
 }
 
 .pie__acciones {
@@ -105,12 +101,29 @@ const anio = new Date().getFullYear()
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem 1.5rem;
-  margin-top: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.pie__acciones .boton--primario {
+  --fondo: var(--color-blanco);
+  --texto: var(--color-petroleo-oscuro);
+  --borde: var(--color-blanco);
+}
+
+.pie__acciones .boton--primario:hover {
+  --fondo: var(--color-agua);
+  --borde: var(--color-agua);
+}
+
+.pie__tel {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
 }
 
 .pie__titulo {
-  color: var(--color-coral-oscuro);
-  margin: 1.4rem 0 0.4rem;
+  margin: 1.75rem 0 0.6rem;
+  color: #8FC4D0;
 }
 
 .pie__titulo:first-child {
@@ -121,67 +134,70 @@ const anio = new Date().getFullYear()
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding-block: 0.2rem;
-  border-bottom: 1px dotted var(--color-arena-oscura);
-}
-
-.pie__horario dt {
-  font-weight: 500;
+  padding-block: 0.4rem;
+  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+  font-size: 0.95rem;
 }
 
 .pie__horario dd {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
   text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 
 .pie__nota {
-  color: var(--color-tinta-suave);
+  opacity: 0.75;
 }
 
 .pie__direccion {
   font-style: normal;
+  line-height: 1.6;
 }
 
 .pie__enlaces {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.1rem 1.2rem;
+  gap: 0.25rem 1.25rem;
 }
 
 .pie__enlaces a {
-  display: inline-block;
-  padding-block: 0.55rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  text-decoration: none;
+}
+
+.pie__enlaces a:hover,
+.pie__direccion a:hover,
+.pie__tel:hover {
   text-decoration: underline;
-  text-decoration-color: var(--color-arena-oscura);
   text-underline-offset: 0.2em;
 }
 
-.pie__enlaces a:hover {
-  text-decoration-color: var(--color-coral);
-}
-
-.pie__mapa :deep(.mapa) {
-  border: 1.5px solid var(--color-tinta);
+.pie__mapa :deep(svg) {
+  border-radius: 14px;
+  overflow: hidden;
 }
 
 .pie__referencia {
   margin-top: 0.6rem;
-  color: var(--color-tinta-suave);
   text-transform: none;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #B5C8CC;
 }
 
 .pie__legal {
   display: grid;
   gap: 0.75rem;
-  padding-block: 1.25rem;
-  border-top: 1px dashed var(--color-arena-oscura);
-  font-size: var(--text-chico);
+  padding-block: 1.5rem 2rem;
+  border-top: 1px solid rgb(255 255 255 / 0.12);
+  font-size: 0.85rem;
+  color: #B5C8CC;
 }
 
 .pie__aviso strong {
-  font-weight: 700;
+  color: var(--color-blanco);
 }
 
 .pie__credito a {
@@ -189,17 +205,10 @@ const anio = new Date().getFullYear()
   text-underline-offset: 0.2em;
 }
 
-/* El nombre gigante queda cortado por el borde inferior. */
-.pie__gigante {
-  font-family: var(--font-serif);
-  font-size: clamp(3.4rem, 16vw, 17.5rem);
-  line-height: 0.8;
-  letter-spacing: -0.045em;
-  white-space: nowrap;
-  margin: 0.5rem 0 -0.16em;
-  padding-left: calc(var(--margen) - 0.06em);
-  color: var(--color-tinta);
-  user-select: none;
+.pie__credito {
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-weight: 400;
 }
 
 @media (min-width: 48rem) {
@@ -215,7 +224,6 @@ const anio = new Date().getFullYear()
 @media (min-width: 64rem) {
   .pie__rejilla {
     grid-template-columns: 1.2fr 1fr 1.1fr;
-    align-items: start;
   }
 
   .pie__mapa {

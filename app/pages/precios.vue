@@ -46,7 +46,7 @@ const totalPlan = ref(0)
 
 .precios__aviso {
   margin-top: 1.25rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .precios__lista,
@@ -56,8 +56,8 @@ const totalPlan = ref(0)
 
 .precios__plan {
   padding-block: clamp(3rem, 7vw, 6rem);
-  background: var(--color-hueso);
-  border-block: 1.5px solid var(--color-tinta);
+  background: var(--color-niebla);
+  border-block: 1px solid var(--color-linea);
   scroll-margin-top: 1rem;
 }
 

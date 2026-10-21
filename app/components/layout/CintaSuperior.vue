@@ -25,14 +25,13 @@ const estado = useEstadoClinica()
         <a :href="`tel:${site.urgencias.enlace}`">{{ site.urgencias.visible }}</a>
       </p>
     </div>
-    <div class="regla" aria-hidden="true" />
   </div>
 </template>
 
 <style scoped>
 .cinta {
-  background: var(--color-hueso);
-  color: var(--color-tinta);
+  background: var(--color-petroleo-oscuro);
+  color: var(--color-blanco);
 }
 
 .cinta__fila {
@@ -45,13 +44,20 @@ const estado = useEstadoClinica()
   flex-wrap: wrap;
 }
 
+.cinta .etiqueta {
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  font-size: 0.82rem;
+}
+
 .cinta__horario {
   display: none;
   gap: 0.6rem;
 }
 
 .cinta__sep {
-  color: var(--color-arena-oscura);
+  opacity: 0.5;
 }
 
 .cinta__estado {
@@ -64,27 +70,25 @@ const estado = useEstadoClinica()
   font-weight: 700;
 }
 
-/* Marca de estado: una muestra de tono en miniatura, no un puntito verde. */
 .cinta__marca {
-  width: 0.55rem;
-  height: 0.8rem;
-  border: 1.5px solid var(--color-tinta);
-  border-radius: 1px 1px 45% 45% / 1px 1px 35% 35%;
-  background: var(--color-arena);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #9FB3B8;
 }
 
 .cinta__marca.is-abierto {
-  background: var(--color-menta);
+  background: #7FD6B4;
 }
 
 .cinta__detalle {
-  color: var(--color-tinta-suave);
+  opacity: 0.85;
 }
 
 .cinta__urgencias a {
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: var(--color-coral);
+  text-decoration-color: rgb(255 255 255 / 0.5);
   text-underline-offset: 0.2em;
   white-space: nowrap;
 }

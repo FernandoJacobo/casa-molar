@@ -75,23 +75,22 @@ const RIZOS = [
 }
 
 .avatar__fondo {
-  fill: var(--avatar-fondo, var(--color-hueso));
+  fill: var(--avatar-fondo, var(--color-agua));
 }
 
 .avatar__borde {
   fill: none;
-  stroke: var(--color-tinta);
+  stroke: none;
   stroke-width: 1.6;
   stroke-linejoin: round;
 }
 
 .avatar__persona {
-  filter: url(#trazo);
 }
 
 .avatar__piel,
 .avatar__ropa {
-  fill: var(--color-marfil);
+  fill: var(--color-blanco);
   stroke: var(--color-tinta);
   stroke-width: 1.4;
   stroke-linejoin: round;
@@ -110,12 +109,12 @@ const RIZOS = [
 }
 
 .avatar__linea--clara {
-  stroke: var(--color-marfil);
+  stroke: var(--color-blanco);
 }
 
 .avatar__acento {
   fill: none;
-  stroke: var(--color-coral);
+  stroke: var(--color-petroleo);
   stroke-width: 2.4;
   stroke-linecap: round;
 }
@@ -128,7 +127,7 @@ const RIZOS = [
 }
 
 .avatar__aretes circle {
-  fill: var(--color-coral);
+  fill: var(--color-petroleo);
   stroke: var(--color-tinta);
   stroke-width: 1;
 }

@@ -30,8 +30,8 @@ import { resenas } from '~/data/contenido'
 <style scoped>
 .escriben {
   padding-block: clamp(4rem, 9vw, 8rem);
-  background: var(--color-hueso);
-  border-block: 1.5px solid var(--color-tinta);
+  background: var(--color-niebla);
+  border-block: 1px solid var(--color-linea);
 }
 
 .escriben__rejilla {
@@ -47,7 +47,7 @@ import { resenas } from '~/data/contenido'
 .escriben__fecha {
   justify-self: center;
   padding: 0.2rem 0.6rem;
-  border: 1px solid var(--color-arena-oscura);
+  border: 1px solid var(--color-linea-fuerte);
   color: var(--color-tinta-suave);
 }
 

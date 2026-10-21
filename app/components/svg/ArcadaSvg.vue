@@ -83,14 +83,14 @@ const curvaInf = trazoCurva(inf, 0.5)
 
 .arcada__encia {
   fill: none;
-  stroke: var(--color-coral);
-  stroke-opacity: 0.16;
+  stroke: var(--color-encia);
+  stroke-opacity: 0.55;
   stroke-width: 13;
   stroke-linecap: butt;
 }
 
 .arcada__pieza {
-  --pz-relleno: var(--color-marfil);
+  --pz-relleno: var(--color-blanco);
   transition: --pz-relleno 0.5s var(--ease-suave);
 }
 
@@ -99,7 +99,7 @@ const curvaInf = trazoCurva(inf, 0.5)
 }
 
 .arcada__pieza.is-marcada {
-  --pz-relleno: var(--color-coral);
+  --pz-relleno: var(--color-petroleo);
 }
 
 .arcada__numeros text {
@@ -119,8 +119,8 @@ const curvaInf = trazoCurva(inf, 0.5)
 }
 
 @keyframes destello {
-  0%, 100% { --pz-relleno: var(--color-marfil); }
-  35% { --pz-relleno: #FFFDF7; }
+  0%, 100% { --pz-relleno: var(--color-blanco); }
+  35% { --pz-relleno: var(--color-agua); }
 }
 </style>
 
@@ -128,6 +128,6 @@ const curvaInf = trazoCurva(inf, 0.5)
 @property --pz-relleno {
   syntax: "<color>";
   inherits: true;
-  initial-value: #F4ECDD;
+  initial-value: #FFFFFF;
 }
 </style>

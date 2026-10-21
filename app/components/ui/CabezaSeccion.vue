@@ -1,7 +1,7 @@
 <script setup lang="ts">
-/** Encabezado de sección numerado con un código de pieza FDI: "§ 12 · Odontograma". */
+/** Encabezado de sección: rótulo, título y entrada opcional. `num` queda como referencia interna. */
 withDefaults(defineProps<{
-  num: string
+  num?: string
   rotulo: string
   titulo: string
   as?: 'h1' | 'h2'
@@ -11,7 +11,7 @@ withDefaults(defineProps<{
 
 <template>
   <div class="cabeza">
-    <p class="seccion-num"><b>§ {{ num }}</b><span>{{ rotulo }}</span></p>
+    <p class="seccion-num"><span>{{ rotulo }}</span></p>
     <component :is="as" :id="id" class="h2 cabeza__titulo">{{ titulo }}</component>
     <div v-if="$slots.default" class="cabeza__entrada">
       <slot />

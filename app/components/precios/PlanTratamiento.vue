@@ -153,7 +153,7 @@ const consultaPlan = computed(() => ({ motivo: 'plan', plan: seleccion.value.map
         <p class="hoja__aviso">Precios ilustrativos "desde", sujetos a valoración. Las citas son aproximadas. Documento de demostración.</p>
 
         <div class="hoja__acciones">
-          <button type="button" class="boton boton--coral" @click="enviar(mensaje(), 'Vista previa: tu plan por WhatsApp')">Enviar por WhatsApp</button>
+          <button type="button" class="boton boton--primario" @click="enviar(mensaje(), 'Vista previa: tu plan por WhatsApp')">Enviar por WhatsApp</button>
           <button type="button" class="boton boton--claro" @click="imprimir">Imprimir</button>
           <NuxtLink :to="{ path: '/cita', query: consultaPlan }" class="enlace">Agendar con este plan</NuxtLink>
         </div>
@@ -169,19 +169,19 @@ const consultaPlan = computed(() => ({ motivo: 'plan', plan: seleccion.value.map
 }
 
 .plan__paso {
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
   margin-bottom: 0.75rem;
 }
 
 .plan__opciones {
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
 }
 
 .opcion {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border-bottom: 1px solid var(--color-tinta);
+  border-bottom: 1px solid var(--color-linea);
 }
 
 .opcion__label {
@@ -205,13 +205,15 @@ const consultaPlan = computed(() => ({ motivo: 'plan', plan: seleccion.value.map
 .opcion__caja {
   width: 1.3rem;
   height: 1.3rem;
-  border: 1.5px solid var(--color-tinta);
-  background: var(--color-marfil);
+  border: 1.5px solid var(--color-linea-fuerte);
+  border-radius: 5px;
+  background: var(--color-blanco);
   position: relative;
 }
 
 .opcion.is-elegida .opcion__caja {
-  background: var(--color-coral);
+  background: var(--color-petroleo);
+  border-color: var(--color-petroleo);
 }
 
 .opcion.is-elegida .opcion__caja::after {
@@ -221,13 +223,13 @@ const consultaPlan = computed(() => ({ motivo: 'plan', plan: seleccion.value.map
   top: 0.08rem;
   width: 0.4rem;
   height: 0.75rem;
-  border: solid var(--color-tinta);
+  border: solid var(--color-blanco);
   border-width: 0 2px 2px 0;
   rotate: 40deg;
 }
 
 .opcion__check:focus-visible + .opcion__caja {
-  outline: 2.5px solid var(--color-coral-oscuro);
+  outline: 2.5px solid var(--color-petroleo-oscuro);
   outline-offset: 3px;
 }
 
@@ -246,22 +248,22 @@ const consultaPlan = computed(() => ({ motivo: 'plan', plan: seleccion.value.map
 .opcion__piezas {
   min-height: 2.75rem;
   padding: 0 0.7rem;
-  border: 1.5px solid var(--color-tinta);
-  border-radius: 1px 1px 12px 12px;
+  border: 1px solid var(--color-linea);
+  border-radius: 8px;
   background: var(--color-menta);
   white-space: nowrap;
 }
 
 .opcion__piezas[aria-pressed="true"] {
-  background: var(--color-tinta);
-  color: var(--color-marfil);
+  background: var(--color-petroleo);
+  color: var(--color-blanco);
 }
 
 .plan__odonto {
   margin-top: 2rem;
   padding: 1.25rem;
-  border: 1.5px dashed var(--color-tinta);
-  background: var(--color-marfil);
+  border: 1px dashed var(--color-linea-fuerte);
+  background: var(--color-blanco);
 }
 
 .plan__ayuda {
@@ -278,10 +280,10 @@ const consultaPlan = computed(() => ({ motivo: 'plan', plan: seleccion.value.map
 .hoja {
   align-self: start;
   padding: clamp(1.25rem, 3vw, 2rem);
-  background: #FBF6EC;
-  border: 1.5px solid var(--color-tinta);
+  background: var(--color-blanco);
+  border: 1px solid var(--color-linea);
   border-radius: var(--radius-recto);
-  box-shadow: var(--shadow-carton);
+  box-shadow: var(--shadow-suave);
 }
 
 .hoja__cabeza {
@@ -326,7 +328,7 @@ const consultaPlan = computed(() => ({ motivo: 'plan', plan: seleccion.value.map
   padding: 0.55rem 0.3rem;
   text-align: left;
   vertical-align: top;
-  border-bottom: 1px dotted var(--color-arena-oscura);
+  border-bottom: 1px dotted var(--color-linea-fuerte);
 }
 
 .hoja__tabla thead th {
@@ -336,7 +338,7 @@ const consultaPlan = computed(() => ({ motivo: 'plan', plan: seleccion.value.map
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-tinta-suave);
-  border-bottom: 1.5px solid var(--color-tinta);
+  border-bottom: 1px solid var(--color-linea);
 }
 
 .hoja__tabla .num {
@@ -350,17 +352,17 @@ const consultaPlan = computed(() => ({ motivo: 'plan', plan: seleccion.value.map
 
 .hoja__cod {
   font-size: 0.7rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .hoja__tabla tr.is-pendiente td {
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
 }
 
 .hoja__tabla tfoot th,
 .hoja__tabla tfoot td {
   border-bottom: 0;
-  border-top: 1.5px solid var(--color-tinta);
+  border-top: 1px solid var(--color-linea);
   font-weight: 700;
   padding-top: 0.8rem;
 }
@@ -371,7 +373,7 @@ const consultaPlan = computed(() => ({ motivo: 'plan', plan: seleccion.value.map
 
 .hoja__alerta {
   margin-top: 0.6rem;
-  color: var(--color-coral-oscuro);
+  color: var(--color-petroleo-oscuro);
   font-weight: 700;
   font-size: var(--text-chico);
 }

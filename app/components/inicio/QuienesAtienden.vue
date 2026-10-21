@@ -1,20 +1,18 @@
 <script setup lang="ts">
 import { equipo } from '~/data/equipo'
-import { tonoPorCodigo } from '~/data/tonos'
 </script>
 
 <template>
   <section class="equipo" aria-labelledby="equipo-titulo">
     <div class="contenedor">
-      <UiCabezaSeccion id="equipo-titulo" num="18" rotulo="Quiénes te atienden" titulo="Cuatro personas, cada una con su tono.">
-        Personas y datos ficticios, como todo en este demo. Los retratos están dibujados a mano.
+      <UiCabezaSeccion id="equipo-titulo" num="18" rotulo="Quiénes te atienden" titulo="Cuatro especialistas, un mismo criterio.">
+        Te atiende siempre la misma persona en cada tratamiento. Personas y datos ficticios, como todo en este demo.
       </UiCabezaSeccion>
 
       <ol class="equipo__escalera">
-        <li v-for="(p, i) in equipo" :key="p.id" class="persona" :style="{ '--escalon': i }">
+        <li v-for="p in equipo" :key="p.id" class="persona">
           <div class="persona__retrato">
             <SvgAvatarSvg :avatar="p.avatar" :nombre="p.nombre" />
-            <UiPestanaTono class="persona__tono" :codigo="p.tono" :hex="tonoPorCodigo(p.tono)!.hex" tamano="chica" aria-hidden="true" />
           </div>
           <p class="etiqueta persona__rol">{{ p.rol }}</p>
           <h3 class="persona__nombre">{{ p.nombre }}</h3>
@@ -34,51 +32,50 @@ import { tonoPorCodigo } from '~/data/tonos'
 
 .equipo__escalera {
   display: grid;
-  gap: 3rem 1.5rem;
+  gap: 2.5rem 1.5rem;
   margin-top: clamp(2.5rem, 6vw, 4rem);
 }
 
 .persona__retrato {
-  position: relative;
-  max-width: 13rem;
+  display: grid;
+  place-items: end center;
+  padding: 1.5rem 1.5rem 0;
+  border-radius: 20px;
+  background: var(--color-niebla);
 }
 
-.persona__tono {
-  position: absolute;
-  right: -0.9rem;
-  top: 38%;
-  rotate: 12deg;
+.persona__retrato :deep(svg) {
+  width: min(100%, 11rem);
 }
 
 .persona__rol {
-  margin-top: 1rem;
-  color: var(--color-coral-oscuro);
+  margin-top: 1.1rem;
+  color: var(--color-petroleo);
 }
 
 .persona__nombre {
-  font-size: 1.55rem;
+  font-size: 1.45rem;
   margin-top: 0.3rem;
-  line-height: 1.05;
+  line-height: 1.1;
 }
 
 .persona__anios {
-  font-size: 0.8rem;
-  margin-top: 0.4rem;
-}
-
-.persona__anios span {
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
   color: var(--color-tinta-suave);
 }
 
 .persona__disfruta {
-  margin-top: 0.8rem;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--color-linea);
   font-size: 0.97rem;
-  max-width: 30ch;
+  max-width: 34ch;
 }
 
 .persona__disfruta .etiqueta {
   display: block;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
   color: var(--color-tinta-suave);
 }
 
@@ -91,29 +88,12 @@ import { tonoPorCodigo } from '~/data/tonos'
   .equipo__escalera {
     grid-template-columns: 1fr 1fr;
   }
-
-  .persona:nth-child(even) {
-    margin-top: 5rem;
-  }
 }
 
 @media (min-width: 64rem) {
-  /* Escalera: cada columna baja un escalón. */
   .equipo__escalera {
     grid-template-columns: repeat(4, 1fr);
     align-items: start;
-  }
-
-  .persona:nth-child(even) {
-    margin-top: 0;
-  }
-
-  .persona:nth-child(n) {
-    margin-top: calc(var(--escalon) * 3.5rem);
-  }
-
-  .persona:nth-child(4) {
-    margin-top: 1.5rem;
   }
 }
 </style>
