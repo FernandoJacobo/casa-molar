@@ -75,6 +75,11 @@ function usarPlan() {
   gap: 2rem;
 }
 
+.fin > *,
+.fin__form {
+  min-width: 0;
+}
+
 .fin__form {
   display: grid;
   gap: 1.4rem;
@@ -103,6 +108,7 @@ function usarPlan() {
 
 .fin__entrada input {
   flex: 1;
+  width: 100%;
   min-width: 0;
   min-height: 3.2rem;
   border: 0;
