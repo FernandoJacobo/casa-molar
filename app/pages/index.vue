@@ -1,25 +1,22 @@
 <script setup lang="ts">
-import { tonos } from '~/data/tonos'
+import { equipo } from '~/data/equipo'
+import { tratamientos } from '~/data/tratamientos'
 </script>
 
 <template>
   <div class="contenedor" style="padding-block: 3rem; display: grid; gap: 3rem">
-    <h1 style="font-size: clamp(4rem, 15vw, 13rem)">Cuidamos las 32.</h1>
-    <SvgArcadaSvg destello numeros style="max-width: 40rem" />
-    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap">
-      <UiPestanaTono v-for="t in tonos" :key="t.codigo" :codigo="t.codigo" :hex="t.hex" />
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem">
+      <SvgAvatarSvg v-for="p in equipo" :key="p.id" :avatar="p.avatar" />
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 50rem">
-      <SvgSonrisaSvg variante="antes" tono="#D4B685" />
-      <SvgSonrisaSvg variante="despues" tono="#EEE3CF" />
+    <div style="background: var(--color-placa); padding: 2rem">
+      <SvgPanoramicaSvg />
     </div>
-    <UiTarjetaCita folio="CM-0001" :giro="-2" style="max-width: 24rem">
-      <p>Agendar valoración</p>
-    </UiTarjetaCita>
-    <div style="display: grid; gap: 1rem">
-      <UiBurbujaChat nombre="Rocío M." hora="6:12 p. m.">Llevaba 6 años sin ir.</UiBurbujaChat>
-      <UiBurbujaChat nombre="Casa Molar" lado="der" :ficticia="false">Gracias.</UiBurbujaChat>
+    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem">
+      <div v-for="t in tratamientos" :key="t.slug" style="border: 1px solid; background: var(--color-hueso)">
+        <SvgIlustracionTratamiento :slug="t.slug" />
+        <p class="etiqueta">{{ t.slug }}</p>
+      </div>
+      <SvgSillonSvg />
     </div>
-    <button class="boton" @click="useWhatsapp().enviar('*Hola*\n\n• Prueba: sí')">Probar WhatsApp</button>
   </div>
 </template>
