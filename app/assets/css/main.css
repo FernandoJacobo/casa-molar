@@ -294,3 +294,27 @@
     .boton { transition: none; }
   }
 }
+
+/* Impresión: sin cinta, encabezado, pie, barra móvil ni grano. */
+@media print {
+  .cinta,
+  .encabezado,
+  .pie,
+  .barra,
+  .saltar {
+    display: none !important;
+  }
+
+  body {
+    padding: 0;
+    background: #fff;
+  }
+
+  body::before {
+    display: none;
+  }
+
+  @page {
+    margin: 14mm;
+  }
+}

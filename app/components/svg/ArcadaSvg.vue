@@ -11,11 +11,13 @@ const props = withDefaults(defineProps<{
   destello?: boolean
   /** Cuadrante resaltado (cronómetro de cepillado). */
   cuadrante?: number | null
+  /** Piezas marcadas (hoja de plan). */
+  marcadas?: number[]
   numeros?: boolean
   encia?: boolean
   /** Título accesible; sin título, la ilustración es decorativa. */
   titulo?: string
-}>(), { modo: 'ambas', destello: false, cuadrante: null, numeros: false, encia: true, titulo: '' })
+}>(), { modo: 'ambas', destello: false, cuadrante: null, marcadas: () => [], numeros: false, encia: true, titulo: '' })
 
 const d = disposicionArcadas()
 const { sup, inf, origenSup, origenInf } = d
@@ -47,7 +49,7 @@ const curvaInf = trazoCurva(inf, 0.5)
         :href="`#pz-${p.tipo}`"
         :transform="transformar(p)"
         class="arcada__pieza"
-        :class="{ 'is-activa': cuadrante === cuadranteDe(p.fdi) }"
+        :class="{ 'is-activa': cuadrante === cuadranteDe(p.fdi), 'is-marcada': marcadas.includes(p.fdi) }"
         :style="{ '--i': i }"
       />
     </g>
@@ -59,7 +61,7 @@ const curvaInf = trazoCurva(inf, 0.5)
         :href="`#pz-${p.tipo}`"
         :transform="transformar(p)"
         class="arcada__pieza"
-        :class="{ 'is-activa': cuadrante === cuadranteDe(p.fdi) }"
+        :class="{ 'is-activa': cuadrante === cuadranteDe(p.fdi), 'is-marcada': marcadas.includes(p.fdi) }"
         :style="{ '--i': 16 + i }"
       />
     </g>
@@ -94,6 +96,10 @@ const curvaInf = trazoCurva(inf, 0.5)
 
 .arcada__pieza.is-activa {
   --pz-relleno: var(--color-menta);
+}
+
+.arcada__pieza.is-marcada {
+  --pz-relleno: var(--color-coral);
 }
 
 .arcada__numeros text {
