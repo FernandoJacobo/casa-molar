@@ -78,6 +78,28 @@ export default defineNuxtConfig({
             : 'User-agent: *\nDisallow: /\n',
         )
 
+        // Cabeceras de Cloudflare Pages; el noindex también va por cabecera mientras el sitio sea demo.
+        writeFileSync(
+          join(publicDir, '_headers'),
+          [
+            '/*',
+            ...(site.indexable ? [] : ['  X-Robots-Tag: noindex, nofollow']),
+            '  X-Content-Type-Options: nosniff',
+            '  Referrer-Policy: strict-origin-when-cross-origin',
+            '  Permissions-Policy: camera=(), microphone=(), geolocation=()',
+            '',
+            '/_nuxt/*',
+            '  Cache-Control: public, max-age=31536000, immutable',
+            '',
+            '/_fonts/*',
+            '  Cache-Control: public, max-age=31536000, immutable',
+            '',
+            '/sw.js',
+            '  Cache-Control: no-cache',
+            '',
+          ].join('\n'),
+        )
+
         // Inserta la hoja de estilos de entrada dentro de cada HTML: una petición menos que bloquea el pintado.
         const dirs = [publicDir, ...nitro.options.publicAssets.map(a => a.dir)]
         const leerCss = (href: string) => {
