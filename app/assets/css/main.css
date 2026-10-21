@@ -11,7 +11,9 @@
   --color-tinta: #1D2326;
   --color-tinta-suave: #4A5154;
   --color-coral: #E2674D;
-  --color-coral-oscuro: #B84A33;
+  /* Coral para texto grande sobre marfil (≥ 3:1). */
+  --color-coral-titular: #CC573E;
+  --color-coral-oscuro: #9E3E2A;
   --color-menta: #BFE0D4;
   --color-placa: #0E181D;
   --color-placa-linea: #8FC4D0;

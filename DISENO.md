@@ -25,7 +25,8 @@ Tono: cálido, boutique, tranquilo, humano. Consultorio de diseño bien cuidado,
 | `--color-tinta` | `#1D2326` | texto, trazos, ilustración |
 | `--color-tinta-suave` | `#4A5154` | texto secundario (AA sobre marfil y hueso) |
 | `--color-coral` | `#E2674D` | acento (encía): CTA, números destacados, trazo de acento |
-| `--color-coral-oscuro` | `#B84A33` | texto pequeño en coral (AA) |
+| `--color-coral-titular` | `#CC573E` | coral para texto grande sobre marfil (≥ 3:1): "32." del hero, número FDI del panel |
+| `--color-coral-oscuro` | `#9E3E2A` | texto pequeño en coral (AA ≥ 4.5:1 sobre marfil, hueso y menta). Era `#B84A33`; se oscureció tras Lighthouse (4.4:1). |
 | `--color-menta` | `#BFE0D4` | solo rellenos puntuales (frescura): cuadrante activo del cronómetro, marcas de "sano" |
 | `--color-placa` | `#0E181D` | fondo de la sección radiográfica |
 | `--color-placa-linea` | `#8FC4D0` | trazos de la placa |

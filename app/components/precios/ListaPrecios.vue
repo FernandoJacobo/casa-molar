@@ -20,7 +20,7 @@ const grupos = computed(() =>
 <template>
   <div class="lista">
     <section v-for="g in grupos" :key="g.cat" class="lista__grupo" :aria-labelledby="`lp-${g.cat}`">
-      <h3 :id="`lp-${g.cat}`" class="etiqueta lista__cat">{{ g.cat }}</h3>
+      <h2 :id="`lp-${g.cat}`" class="etiqueta lista__cat">{{ g.cat }}</h2>
       <ul>
         <li v-for="r in g.renglones" :key="r.nombre" class="renglon">
           <span class="renglon__nombre">

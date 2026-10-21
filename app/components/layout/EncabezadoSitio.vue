@@ -16,7 +16,7 @@ onKeyStroke('Escape', () => (abierto.value = false))
 <template>
   <header class="encabezado">
     <div class="contenedor encabezado__fila">
-      <NuxtLink to="/" class="encabezado__logo" aria-label="Casa Molar, inicio">
+      <NuxtLink to="/" class="encabezado__logo">
         <LayoutLogoCasa />
       </NuxtLink>
 

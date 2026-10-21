@@ -72,13 +72,13 @@ const relacionados = computed(() => (pieza.value?.tratamientos ?? []).map(s => t
   font-family: var(--font-serif);
   font-size: clamp(4.5rem, 9vw, 7rem);
   line-height: 0.78;
-  color: var(--color-coral);
+  color: var(--color-coral-titular);
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.04em;
 }
 
 .panel__fdi--vacio {
-  color: var(--color-arena);
+  color: var(--color-tinta-suave);
 }
 
 .panel__codigo {

@@ -58,7 +58,7 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
             class="sim__muestra"
             :class="{ 'is-actual': t.codigo === actual, 'is-meta': t.codigo === meta, 'is-rango': enRango(i) }"
             :style="{ '--hex': t.hex }"
-            :aria-label="`${t.codigo}: marcar como ${eligiendo === 'actual' ? 'tono de hoy' : 'meta'}${t.codigo === actual ? ' (tu tono de hoy)' : ''}${t.codigo === meta ? ' (tu meta)' : ''}`"
+            :aria-label="`${t.codigo}${t.codigo === actual ? ' hoy' : ''}${t.codigo === meta ? ' meta' : ''}: marcar como ${eligiendo === 'actual' ? 'tono de hoy' : 'meta'}`"
             @click="elegir(t.codigo)"
           >
             <span class="sim__codigo mono">{{ t.codigo }}</span>
@@ -190,7 +190,8 @@ const enRango = (i: number) => i > rango.value[0]! && i < rango.value[1]!
   position: absolute;
   top: -0.82rem;
   font-size: 0.6rem;
-  color: var(--color-marfil);
+  font-weight: 700;
+  color: var(--color-tinta);
 }
 
 .sim__marca--meta {

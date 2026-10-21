@@ -73,7 +73,7 @@ import { site } from '~/config/site'
 
 .hero__titulo em {
   font-style: normal;
-  color: var(--color-coral);
+  color: var(--color-coral-titular);
 }
 
 .hero__entrada {
